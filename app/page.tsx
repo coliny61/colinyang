@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import TestimonialCard from '@/components/TestimonialCard'
 
 export const metadata: Metadata = {
   title: 'Colin Yang - Dallas Fort Worth Real Estate Agent',
@@ -12,17 +11,17 @@ const services = [
   {
     title: 'Property Search',
     href: '/new-client-inquiry',
-    image: 'https://images.squarespace-cdn.com/content/v1/65abf6f1bf81c02e7cbd3cb1/1705780607659-UGYIUKTSLYFVABNRGHP0/image-asset.jpeg',
+    image: '/images/property-search.jpeg',
   },
   {
     title: 'Apartment Locating',
     href: '/apartment-locating',
-    image: 'https://images.squarespace-cdn.com/content/v1/65abf6f1bf81c02e7cbd3cb1/1705781318874-B5EJ5NVULHV4O0X15G1A/image-asset.jpeg',
+    image: '/images/apartment-locating.jpeg',
   },
   {
     title: 'Property Valuation',
     href: '/new-client-inquiry',
-    image: 'https://images.squarespace-cdn.com/content/v1/65abf6f1bf81c02e7cbd3cb1/1705781595938-UUH09RGSFD5SMR0Y1AJC/image-asset.jpeg',
+    image: '/images/property-valuation.jpeg',
   },
 ]
 
@@ -59,49 +58,49 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div>
       {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center">
+      <section className="relative h-screen flex items-center justify-center">
         <Image
-          src="https://images.squarespace-cdn.com/content/v1/65abf6f1bf81c02e7cbd3cb1/1705880242436-D4KLQH8XNITGDHH609DB/image-asset.jpeg"
+          src="/images/hero.jpeg"
           alt="Dallas Fort Worth Real Estate"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">Colin Yang</h1>
-          <p className="text-xl md:text-2xl mb-2">Dallas - Fort Worth Real Estate Agent</p>
-          <p className="text-lg text-gray-200 mb-8">
+        <div className="hero-overlay" />
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-fade-in-up">
+          <h1 className="mb-6">Colin Yang</h1>
+          <p className="text-xl md:text-2xl mb-2 text-white/90 tracking-wide">
+            Dallas - Fort Worth Real Estate Agent
+          </p>
+          <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
             Meet Colin Yang, your dedicated real estate professional committed to building lasting relationships through transparency
           </p>
-          <Link
-            href="/new-client-inquiry"
-            className="inline-block bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-          >
+          <Link href="/new-client-inquiry" className="btn-white">
             Get Started
           </Link>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Services</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+      <section className="section">
+        <div className="container">
+          <h2 className="text-center mb-16">Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Link key={service.title} href={service.href} className="group">
-                <div className="relative h-64 rounded-xl overflow-hidden mb-4">
+              <Link key={service.title} href={service.href} className="group image-hover-zoom">
+                <div className="relative aspect-[4/3] mb-6">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
                 </div>
-                <h3 className="text-xl font-semibold text-center">{service.title}</h3>
+                <h3 className="text-center uppercase tracking-widest text-sm font-semibold">
+                  {service.title}
+                </h3>
               </Link>
             ))}
           </div>
@@ -109,29 +108,26 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-96 rounded-xl overflow-hidden">
+      <section className="section bg-gray-50">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative aspect-[3/4] image-hover-zoom">
               <Image
-                src="https://images.squarespace-cdn.com/content/v1/65abf6f1bf81c02e7cbd3cb1/d8a549bd-f074-42eb-9bd9-ba5ae45c55d2/IMG_9363.png"
+                src="/images/colin-profile.png"
                 alt="Colin Yang"
                 fill
                 className="object-cover"
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-6">About Colin</h2>
-              <p className="text-gray-600 mb-4">
+              <h2 className="mb-8">About Colin</h2>
+              <p className="text-lg leading-relaxed mb-4">
                 Native of Frisco, Texas. Texas Tech University football alumni. Bilingual in Chinese and English.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-lg leading-relaxed mb-8">
                 With expertise in the DFW Metroplex, Colin emphasizes transparency and open communication in every transaction. Whether you&apos;re a first-time buyer or seasoned investor, he&apos;s here to guide you every step of the way.
               </p>
-              <Link
-                href="/about-colin"
-                className="inline-block border border-black text-black px-6 py-2 rounded-lg font-medium hover:bg-black hover:text-white transition-colors"
-              >
+              <Link href="/about-colin" className="btn-secondary">
                 Learn More
               </Link>
             </div>
@@ -140,42 +136,43 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">What Clients Say</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="section">
+        <div className="container">
+          <h2 className="text-center mb-16">What Clients Say</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
+              <div key={index} className="p-8 bg-gray-50">
+                <p className="testimonial-quote mb-6">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <p className="font-semibold uppercase tracking-widest text-sm">
+                  — {testimonial.author}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 px-4">
+      <section className="banner min-h-[70vh]">
         <Image
-          src="https://images.squarespace-cdn.com/content/v1/65abf6f1bf81c02e7cbd3cb1/1705880705725-A3OMGPYFK7P0FG0UNCS7/image-asset.jpeg"
+          src="/images/connect-bg.jpeg"
           alt="Dallas skyline"
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Let&apos;s Connect</h2>
-          <p className="text-lg text-gray-200 mb-8">
+        <div className="hero-overlay" />
+        <div className="banner-content">
+          <h2 className="text-white mb-6">Let&apos;s Connect</h2>
+          <p className="text-xl text-white/80 mb-10 max-w-xl mx-auto">
             Ready to find your dream home in Dallas-Fort Worth?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/new-client-inquiry"
-              className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-            >
+            <Link href="/new-client-inquiry" className="btn-white">
               New Client Inquiry
             </Link>
-            <a
-              href="tel:4692561088"
-              className="border border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors"
-            >
+            <a href="tel:4692561088" className="btn-white">
               (469) 256-1088
             </a>
           </div>

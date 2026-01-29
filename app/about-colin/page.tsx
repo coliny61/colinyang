@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import TestimonialCard from '@/components/TestimonialCard'
 
 export const metadata: Metadata = {
   title: 'About Colin | Colin Yang - DFW Real Estate',
@@ -29,46 +28,40 @@ const testimonials = [
 
 export default function AboutColinPage() {
   return (
-    <div className="min-h-screen">
+    <div>
       {/* Hero Section */}
-      <section className="bg-gray-50 py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[500px] rounded-xl overflow-hidden">
+      <section className="section bg-gray-50">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative aspect-[3/4] image-hover-zoom">
               <Image
-                src="https://images.squarespace-cdn.com/content/v1/65abf6f1bf81c02e7cbd3cb1/d8a549bd-f074-42eb-9bd9-ba5ae45c55d2/IMG_9363.png"
+                src="/images/colin-profile.png"
                 alt="Colin Yang"
                 fill
                 className="object-cover"
               />
             </div>
             <div>
-              <h1 className="text-4xl font-bold mb-6">About Colin</h1>
-              <div className="space-y-4 text-gray-600">
-                <p>
+              <h1 className="mb-8">About Colin</h1>
+              <div className="space-y-4">
+                <p className="text-lg leading-relaxed">
                   Colin Yang is a real estate expert based in the Dallas-Fort Worth area. He&apos;s a Frisco, Texas native who earned a Master&apos;s degree in Data Science and Bachelor&apos;s degree in Business Analysis from Texas Tech University, where he played football for four years (2016-2020).
                 </p>
-                <p>
+                <p className="text-lg leading-relaxed">
                   Colin emphasizes relationships and personalized service, positioning himself as someone who understands the local landscape, market trends, and neighborhood nuances.
                 </p>
-                <p>
+                <p className="text-lg leading-relaxed">
                   He serves first-time homebuyers, investors, renters, and sellers with the same dedication and transparency.
                 </p>
-                <p className="font-medium text-black">
+                <p className="text-lg leading-relaxed font-semibold text-black">
                   Bilingual in Chinese and English.
                 </p>
               </div>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/new-client-inquiry"
-                  className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
-                >
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link href="/new-client-inquiry" className="btn-primary">
                   Work With Colin
                 </Link>
-                <a
-                  href="tel:4692561088"
-                  className="border border-black text-black px-6 py-3 rounded-lg font-medium hover:bg-black hover:text-white transition-colors"
-                >
+                <a href="tel:4692561088" className="btn-secondary">
                   (469) 256-1088
                 </a>
               </div>
@@ -78,9 +71,9 @@ export default function AboutColinPage() {
       </section>
 
       {/* Services */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Services</h2>
+      <section className="section">
+        <div className="container">
+          <h2 className="text-center mb-12">Services</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
               'New Client Inquiries',
@@ -90,8 +83,8 @@ export default function AboutColinPage() {
               'Off-Market Listings',
               'Property Valuation',
             ].map((service) => (
-              <div key={service} className="bg-gray-50 p-6 rounded-xl">
-                <p className="font-medium">{service}</p>
+              <div key={service} className="bg-gray-50 p-8 text-center">
+                <p className="text-sm font-semibold uppercase tracking-widest">{service}</p>
               </div>
             ))}
           </div>
@@ -99,35 +92,36 @@ export default function AboutColinPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Client Testimonials</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+      <section className="section bg-gray-50">
+        <div className="container">
+          <h2 className="text-center mb-12">Client Testimonials</h2>
+          <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
+              <div key={index} className="bg-white p-8">
+                <p className="testimonial-quote mb-6">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <p className="font-semibold uppercase tracking-widest text-sm">
+                  — {testimonial.author}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 px-4 bg-black text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-gray-300 mb-8">
+      <section className="section section-dark">
+        <div className="container text-center">
+          <h2 className="text-white mb-6">Ready to Get Started?</h2>
+          <p className="text-white/70 mb-10 max-w-xl mx-auto">
             Contact Colin today to begin your real estate journey in DFW.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/new-client-inquiry"
-              className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-            >
+            <Link href="/new-client-inquiry" className="btn-white">
               New Client Inquiry
             </Link>
-            <a
-              href="mailto:colin@hugginsrealty.com"
-              className="border border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors"
-            >
+            <a href="mailto:colin@hugginsrealty.com" className="btn-white">
               colin@hugginsrealty.com
             </a>
           </div>
