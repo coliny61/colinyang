@@ -23,7 +23,7 @@ export default function NewClientInquiryPage() {
           </div>
 
           <div className="bg-[#141414] border border-[#2a2a2a] p-8 md:p-10">
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" className="space-y-6">
+            <form action="https://formspree.io/f/xqebdqqw" method="POST" className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                   Name <span className="text-[#D52E28]">*</span>

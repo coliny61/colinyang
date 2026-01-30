@@ -25,7 +25,7 @@ export default function ApartmentLocatingPage() {
           <div className="bg-[#141414] border border-[#2a2a2a] p-8 md:p-10">
             <h2 className="text-xl text-white font-semibold mb-6">Lease Contact Form</h2>
 
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" className="space-y-6">
+            <form action="https://formspree.io/f/xqebdqqw" method="POST" className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                   Name

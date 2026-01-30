@@ -48,12 +48,12 @@ export default function LetsConnectPage() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Instagram</p>
                   <a
-                    href="https://www.instagram.com/bundlbook/"
+                    href="https://www.instagram.com/colinyang61/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xl font-medium hover:opacity-70 transition-opacity"
                   >
-                    @bundlbook
+                    @colinyang61
                   </a>
                 </div>
               </div>
@@ -62,7 +62,7 @@ export default function LetsConnectPage() {
             {/* Contact Form */}
             <div>
               <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
-              <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" className="space-y-4">
+              <form action="https://formspree.io/f/xqebdqqw" method="POST" className="space-y-4">
                 <div>
                   <label htmlFor="name">Name *</label>
                   <input type="text" id="name" name="name" required />
