@@ -40,8 +40,8 @@ export default function LetsConnectPage() {
 
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Email</p>
-                  <a href="mailto:colin@hugginsrealty.com" className="text-xl font-medium hover:opacity-70 transition-opacity">
-                    colin@hugginsrealty.com
+                  <a href="mailto:colin@brayreg.com" className="text-xl font-medium hover:opacity-70 transition-opacity">
+                    colin@brayreg.com
                   </a>
                 </div>
 
