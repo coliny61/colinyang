@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import QuickContact from '@/components/QuickContact'
+import LandRanchForm from './LandRanchForm'
 
 export const metadata: Metadata = {
   title: 'Land, Farm & Ranch | Colin Yang - DFW Luxury Real Estate',
@@ -60,99 +61,7 @@ export default function LandFarmRanchPage() {
               </p>
             </div>
 
-            <div className="bg-[#141414] border border-[#2a2a2a] p-8 md:p-10">
-              <form action="https://formspree.io/f/xqebdqqw" method="POST" className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                      Name <span className="text-[#D52E28]">*</span>
-                    </label>
-                    <input type="text" id="name" name="name" required className="form-input" />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                      Email <span className="text-[#D52E28]">*</span>
-                    </label>
-                    <input type="email" id="email" name="email" required className="form-input" />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
-                    Phone
-                  </label>
-                  <input type="tel" id="phone" name="phone" className="form-input" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-white mb-3">
-                    Property Type
-                  </label>
-                  <div className="flex flex-wrap gap-6">
-                    {['Land', 'Farm', 'Ranch'].map((option) => (
-                      <label key={option} className="flex items-center space-x-3 cursor-pointer group">
-                        <input
-                          type="checkbox"
-                          name="propertyType"
-                          value={option}
-                          className="form-checkbox"
-                        />
-                        <span className="text-white/70 group-hover:text-white transition-colors">
-                          {option}
-                        </span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="purchaseDate" className="block text-sm font-medium text-white mb-2">
-                      Preferred Purchase Date
-                    </label>
-                    <input type="date" id="purchaseDate" name="purchaseDate" className="form-input" />
-                  </div>
-                  <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-white mb-2">
-                      Budget
-                    </label>
-                    <input type="text" id="budget" name="budget" placeholder="e.g., $500,000 - $1,000,000" className="form-input" />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="acreage" className="block text-sm font-medium text-white mb-2">
-                      Acreage
-                    </label>
-                    <input type="text" id="acreage" name="acreage" placeholder="e.g., 50+ acres" className="form-input" />
-                  </div>
-                  <div>
-                    <label htmlFor="location" className="block text-sm font-medium text-white mb-2">
-                      Desired Location
-                    </label>
-                    <input type="text" id="location" name="location" placeholder="e.g., West Texas, Hill Country" className="form-input" />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="purpose" className="block text-sm font-medium text-white mb-2">
-                    Property Purpose
-                  </label>
-                  <textarea
-                    id="purpose"
-                    name="purpose"
-                    rows={4}
-                    placeholder="What do you plan to use the property for?"
-                    className="form-textarea"
-                  />
-                </div>
-
-                <button type="submit" className="btn-primary w-full justify-center">
-                  Submit Inquiry
-                </button>
-              </form>
-            </div>
+            <LandRanchForm />
           </div>
         </div>
       </section>

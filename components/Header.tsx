@@ -8,9 +8,9 @@ import { usePathname } from 'next/navigation'
 const navigation = [
   { name: 'About', href: '/about-colin' },
   { name: 'Portfolio', href: '/portfolio' },
-  { name: 'Services', href: '/new-client-inquiry' },
-  { name: 'Land & Ranch', href: '/land-farm-ranch' },
-  { name: 'Lease Inquiry', href: '/lease-inquiry' },
+  { name: 'Reviews', href: '/reviews' },
+  { name: 'Market Stats', href: '/market-stats' },
+  { name: 'Home Value', href: '/home-valuation' },
 ]
 
 export default function Header() {

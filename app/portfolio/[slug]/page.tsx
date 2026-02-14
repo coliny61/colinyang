@@ -10,8 +10,13 @@ interface Property {
   city: string
   state: string
   status?: string
+  price?: string
+  beds?: number
+  baths?: number
+  sqft?: number
   imageCount: number
   imageExt: string
+  videoUrl?: string
 }
 
 const properties: Property[] = [
@@ -111,6 +116,36 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
           )}
         </div>
 
+        {/* Property Specs */}
+        {(property.beds || property.baths || property.sqft || property.price) && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            {property.price && (
+              <div className="bg-[#141414] border border-[#2a2a2a] p-4 text-center">
+                <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Price</div>
+                <div className="text-white font-semibold">{property.price}</div>
+              </div>
+            )}
+            {property.beds && (
+              <div className="bg-[#141414] border border-[#2a2a2a] p-4 text-center">
+                <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Beds</div>
+                <div className="text-white font-semibold">{property.beds}</div>
+              </div>
+            )}
+            {property.baths && (
+              <div className="bg-[#141414] border border-[#2a2a2a] p-4 text-center">
+                <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Baths</div>
+                <div className="text-white font-semibold">{property.baths}</div>
+              </div>
+            )}
+            {property.sqft && (
+              <div className="bg-[#141414] border border-[#2a2a2a] p-4 text-center">
+                <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Sq Ft</div>
+                <div className="text-white font-semibold">{property.sqft.toLocaleString()}</div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Photo Gallery or Placeholder */}
         {images.length > 0 ? (
           <PropertyGallery images={images} address={property.address} />
@@ -121,6 +156,22 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <p className="font-medium">Photos coming soon</p>
+            </div>
+          </div>
+        )}
+
+        {/* Video Tour */}
+        {property.videoUrl && (
+          <div className="mt-8">
+            <h2 className="text-lg text-white font-semibold mb-4">Video Tour</h2>
+            <div className="relative aspect-video border border-[#2a2a2a] overflow-hidden">
+              <iframe
+                src={property.videoUrl}
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={`Video tour of ${property.address}`}
+              />
             </div>
           </div>
         )}

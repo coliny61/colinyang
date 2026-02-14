@@ -9,12 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#000000',
+        primary: '#0a0a0a',
         secondary: '#ffffff',
-        accent: '#3b82f6',
+        accent: '#D52E28',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Montserrat', 'system-ui', 'sans-serif'],
       },
     },
   },

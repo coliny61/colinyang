@@ -42,15 +42,13 @@ const CREDIT_RANGES = [
   "I don't know",
 ]
 
-const LEAD_SOURCES = [
-  'Zillow',
-  'Craigslist',
-  'Realtor',
-  'Friend/Family',
-  'Online Listing (Specify Platform)',
-  'Referral',
-  'Drive-by Signage',
-  'Other (Specify)',
+const INCOME_RANGES = [
+  'Under $3,000/mo',
+  '$3,000 - $4,999/mo',
+  '$5,000 - $7,499/mo',
+  '$7,500 - $9,999/mo',
+  '$10,000+/mo',
+  'Prefer not to say',
 ]
 
 // ── Phone formatter ────────────────────────────────────────────────
@@ -59,43 +57,6 @@ function formatPhone(value: string): string {
   if (digits.length <= 3) return digits
   if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
   return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
-}
-
-// ── Star Rating Component ──────────────────────────────────────────
-function StarRating({ value, onChange }: { value: number; onChange: (v: number) => void }) {
-  const [hover, setHover] = useState(0)
-  const labels = ['', 'Low Interest', 'Somewhat Interested', 'Interested', 'Very Interested', 'High Interest']
-
-  return (
-    <div>
-      <div className="flex gap-2">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <button
-            key={star}
-            type="button"
-            onClick={() => onChange(star)}
-            onMouseEnter={() => setHover(star)}
-            onMouseLeave={() => setHover(0)}
-            className="transition-transform hover:scale-110 focus:outline-none"
-            aria-label={`${star} star${star > 1 ? 's' : ''}`}
-          >
-            <svg
-              className={`w-8 h-8 transition-colors ${
-                star <= (hover || value) ? 'text-[#D52E28]' : 'text-white/20'
-              }`}
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </button>
-        ))}
-      </div>
-      {(hover || value) > 0 && (
-        <p className="text-sm text-white/50 mt-1">{labels[hover || value]}</p>
-      )}
-    </div>
-  )
 }
 
 // ── Section Divider ────────────────────────────────────────────────
@@ -130,12 +91,10 @@ export default function LeaseInquiryForm() {
   const [smokesOnPremises, setSmokesOnPremises] = useState<string>('')
   const [employmentStatus, setEmploymentStatus] = useState<string[]>([])
   const [employmentOther, setEmploymentOther] = useState('')
+  const [occupation, setOccupation] = useState('')
   const [creditScoreRange, setCreditScoreRange] = useState('')
   const [referenceConsent, setReferenceConsent] = useState<string>('')
-  const [leadSource, setLeadSource] = useState('')
-  const [sourcePlatformDetails, setSourcePlatformDetails] = useState('')
-  const [sourceOtherDetails, setSourceOtherDetails] = useState('')
-  const [interestRating, setInterestRating] = useState(0)
+  const [grossMonthlyIncome, setGrossMonthlyIncome] = useState('')
 
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -153,6 +112,13 @@ export default function LeaseInquiryForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError('')
+
+    const phoneDigits = phone.replace(/\D/g, '')
+    if (phoneDigits.length !== 10) {
+      setError('Please enter a valid 10-digit phone number.')
+      return
+    }
+
     setSubmitting(true)
 
     const propertyName = property?.name || selectedProperty
@@ -175,15 +141,10 @@ export default function LeaseInquiryForm() {
       employment_status: employmentStatus.includes('Other')
         ? [...employmentStatus.filter((s) => s !== 'Other'), `Other: ${employmentOther}`].join(', ')
         : employmentStatus.join(', '),
+      occupation: occupation,
       credit_score_range: creditScoreRange,
+      gross_monthly_income: grossMonthlyIncome,
       reference_check_consent: referenceConsent === 'yes' ? 'Yes' : 'No',
-      lead_source:
-        leadSource === 'Online Listing (Specify Platform)'
-          ? `Online Listing: ${sourcePlatformDetails}`
-          : leadSource === 'Other (Specify)'
-            ? `Other: ${sourceOtherDetails}`
-            : leadSource,
-      interest_rating: `${interestRating}/5`,
       source_url: typeof window !== 'undefined' ? window.location.href : '',
       submitted_at: new Date().toISOString(),
     }
@@ -614,8 +575,55 @@ export default function LeaseInquiryForm() {
           </p>
         </div>
 
-        {/* ── References & Source ──────────────────────────────── */}
-        <SectionDivider title="References & Interest" />
+        <div>
+          <label htmlFor="occupation" className="block text-sm font-medium text-white mb-2">
+            Occupation / Job Title <span className="text-[#D52E28]">*</span>
+          </label>
+          <input
+            type="text"
+            id="occupation"
+            value={occupation}
+            onChange={(e) => setOccupation(e.target.value)}
+            required
+            className="form-input"
+            placeholder="e.g., Software Engineer, Registered Nurse, Business Owner"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-white mb-3">
+            Combined Gross Monthly Income (all applicants) <span className="text-[#D52E28]">*</span>
+          </label>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {INCOME_RANGES.map((range) => (
+              <label
+                key={range}
+                className={`flex items-center gap-3 p-3 border cursor-pointer transition-all ${
+                  grossMonthlyIncome === range
+                    ? 'border-[#D52E28] bg-[#D52E28]/5'
+                    : 'border-[#2a2a2a] hover:border-white/30'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="gross_monthly_income"
+                  value={range}
+                  checked={grossMonthlyIncome === range}
+                  onChange={(e) => setGrossMonthlyIncome(e.target.value)}
+                  className="form-checkbox"
+                  required
+                />
+                <span className="text-white/80">{range}</span>
+              </label>
+            ))}
+          </div>
+          <p className="text-xs text-white/30 mt-2">
+            This is self-reported and used only for pre-screening purposes.
+          </p>
+        </div>
+
+        {/* ── References ──────────────────────────────────────── */}
+        <SectionDivider title="References" />
 
         <div>
           <label className="block text-sm font-medium text-white mb-3">
@@ -646,90 +654,30 @@ export default function LeaseInquiryForm() {
           </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-white mb-3">
-            How did you hear about this property? <span className="text-[#D52E28]">*</span>
-          </label>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {LEAD_SOURCES.map((source) => (
-              <label
-                key={source}
-                className={`flex items-center gap-3 p-3 border cursor-pointer transition-all ${
-                  leadSource === source
-                    ? 'border-[#D52E28] bg-[#D52E28]/5'
-                    : 'border-[#2a2a2a] hover:border-white/30'
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="lead_source"
-                  value={source}
-                  checked={leadSource === source}
-                  onChange={(e) => setLeadSource(e.target.value)}
-                  className="form-checkbox"
-                  required
-                />
-                <span className="text-white/80">{source}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {leadSource === 'Online Listing (Specify Platform)' && (
-          <div>
-            <label htmlFor="source_platform" className="block text-sm font-medium text-white mb-2">
-              Which platform? <span className="text-[#D52E28]">*</span>
-            </label>
-            <input
-              type="text"
-              id="source_platform"
-              value={sourcePlatformDetails}
-              onChange={(e) => setSourcePlatformDetails(e.target.value)}
-              required
-              className="form-input"
-              placeholder="e.g., Apartments.com, Facebook Marketplace"
-            />
-          </div>
-        )}
-
-        {leadSource === 'Other (Specify)' && (
-          <div>
-            <label htmlFor="source_other" className="block text-sm font-medium text-white mb-2">
-              Please specify <span className="text-[#D52E28]">*</span>
-            </label>
-            <input
-              type="text"
-              id="source_other"
-              value={sourceOtherDetails}
-              onChange={(e) => setSourceOtherDetails(e.target.value)}
-              required
-              className="form-input"
-              placeholder="How did you find us?"
-            />
-          </div>
-        )}
-
-        <div>
-          <label className="block text-sm font-medium text-white mb-3">
-            Rate your overall interest in leasing this property <span className="text-[#D52E28]">*</span>
-          </label>
-          <StarRating value={interestRating} onChange={setInterestRating} />
-          <input type="hidden" name="interest_rating" value={interestRating} required />
-        </div>
-
         {/* ── Submit ──────────────────────────────────────────── */}
         {error && (
-          <div className="p-4 border border-red-500/30 bg-red-500/10 text-red-300 text-sm">
+          <div className="p-4 border border-red-500/40 bg-red-500/10 text-red-300 text-sm rounded flex items-start gap-3 animate-fade-in">
+            <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             {error}
           </div>
         )}
 
         <button
           type="submit"
-          disabled={submitting || interestRating === 0 || employmentStatus.length === 0}
-          className="btn-primary w-full justify-center mt-8 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:transform-none"
+          disabled={submitting || employmentStatus.length === 0}
+          className="btn-primary w-full justify-center mt-8 disabled:!bg-slate-400 disabled:!text-slate-700 disabled:!border-slate-400 disabled:cursor-not-allowed disabled:hover:transform-none"
         >
-          {submitting ? 'Submitting...' : 'Submit Pre-Qualification'}
+          {submitting ? (
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+              Submitting...
+            </span>
+          ) : 'Submit Pre-Qualification'}
         </button>
 
         <div className="space-y-2 mt-4">

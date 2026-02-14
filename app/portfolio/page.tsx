@@ -10,17 +10,17 @@ export const metadata: Metadata = {
 }
 
 const properties = [
-  { slug: '4928-lexington', address: '4928 Lexington Court', city: 'Dallas', hasImages: true, thumbnail: '/images/portfolio/4928-lexington/photo-1.jpeg' },
-  { slug: '715-declaration', address: '715 Declaration Drive', city: 'Princeton', hasImages: true, thumbnail: '/images/portfolio/715-declaration/photo-1.jpeg' },
-  { slug: '4556-cypress-thorn', address: '4556 Cypress Thorn Drive', city: 'Arlington', hasImages: true, thumbnail: '/images/portfolio/4556-cypress-thorn/photo-1.jpeg' },
-  { slug: '2611-hondo-ave', address: '2611 Hondo Avenue', city: 'Dallas', hasImages: false, thumbnail: null },
-  { slug: '404-warwick-boulevard', address: '404 Warwick Boulevard', city: 'The Colony', hasImages: false, thumbnail: null },
-  { slug: '8100-rincon-street', address: '8100 Rincon Street', city: 'Frisco', hasImages: false, thumbnail: null },
-  { slug: '2209-tralee-circle', address: '2209 Tralee Circle', city: 'McKinney', hasImages: false, thumbnail: null },
-  { slug: '5734-oram-street', address: '5734 Oram Street', city: 'Dallas', hasImages: false, thumbnail: null },
-  { slug: '7304-collin-mckinney-parkway', address: '7304 Collin McKinney Parkway', city: 'McKinney', hasImages: false, thumbnail: null },
-  { slug: '4700-sagan', address: '4700 Sagan Drive', city: 'McKinney', hasImages: true, thumbnail: '/images/portfolio/4700-sagan/photo-1.jpeg' },
-  { slug: '508-saddle-pass', address: '508 Saddle Pass', city: 'McKinney', hasImages: true, thumbnail: '/images/portfolio/508-saddle-pass/photo-1.jpg' },
+  { slug: '4928-lexington', address: '4928 Lexington Court', city: 'Dallas', status: 'LEASED', hasImages: true, thumbnail: '/images/portfolio/4928-lexington/photo-1.jpeg' },
+  { slug: '715-declaration', address: '715 Declaration Drive', city: 'Princeton', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/715-declaration/photo-1.jpeg' },
+  { slug: '4556-cypress-thorn', address: '4556 Cypress Thorn Drive', city: 'Arlington', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/4556-cypress-thorn/photo-1.jpeg' },
+  { slug: '2611-hondo-ave', address: '2611 Hondo Avenue', city: 'Dallas', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '404-warwick-boulevard', address: '404 Warwick Boulevard', city: 'The Colony', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '8100-rincon-street', address: '8100 Rincon Street', city: 'Frisco', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '2209-tralee-circle', address: '2209 Tralee Circle', city: 'McKinney', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '5734-oram-street', address: '5734 Oram Street', city: 'Dallas', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '7304-collin-mckinney-parkway', address: '7304 Collin McKinney Parkway', city: 'McKinney', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '4700-sagan', address: '4700 Sagan Drive', city: 'McKinney', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/4700-sagan/photo-1.jpeg' },
+  { slug: '508-saddle-pass', address: '508 Saddle Pass', city: 'McKinney', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/508-saddle-pass/photo-1.jpg' },
 ]
 
 export default function PortfolioPage() {
@@ -68,6 +68,12 @@ export default function PortfolioPage() {
                       </div>
                     )}
                   </div>
+                  {/* Status Badge */}
+                  {property.status && (
+                    <div className="absolute top-3 left-3 bg-[#D52E28] text-white text-xs font-bold uppercase tracking-wider px-3 py-1">
+                      {property.status}
+                    </div>
+                  )}
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <span className="text-white text-sm font-medium">View Property</span>

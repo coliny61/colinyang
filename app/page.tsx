@@ -291,6 +291,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trust Badges */}
+      <section className="section-surface border-y border-[#2a2a2a] py-12">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+            <div className="flex items-center gap-3">
+              <svg className="w-8 h-8 text-[#D52E28]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <div>
+                <div className="text-white text-sm font-semibold">Texas REALTOR®</div>
+                <div className="text-white/40 text-xs">License #815417</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <svg className="w-8 h-8 text-[#D52E28]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              <div>
+                <div className="text-white text-sm font-semibold">Bray Real Estate</div>
+                <div className="text-white/40 text-xs">Dallas, Texas</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <svg key={i} className="w-5 h-5 text-[#D52E28]" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <div>
+                <div className="text-white text-sm font-semibold">5-Star Rated</div>
+                <div className="text-white/40 text-xs">100+ Happy Clients</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/realtor-equal-logo.png"
+                alt="Equal Housing Opportunity"
+                width={60}
+                height={22}
+                className="opacity-60"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Preview */}
       <section className="section section-surface">
         <div className="container mx-auto">

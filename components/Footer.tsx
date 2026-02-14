@@ -41,9 +41,14 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link href="/about-colin" className="text-white/50 hover:text-[#D52E28] transition-colors">About Colin</Link></li>
               <li><Link href="/portfolio" className="text-white/50 hover:text-[#D52E28] transition-colors">Portfolio</Link></li>
+              <li><Link href="/reviews" className="text-white/50 hover:text-[#D52E28] transition-colors">Reviews</Link></li>
+              <li><Link href="/market-stats" className="text-white/50 hover:text-[#D52E28] transition-colors">Market Stats</Link></li>
+              <li><Link href="/home-valuation" className="text-white/50 hover:text-[#D52E28] transition-colors">Home Valuation</Link></li>
               <li><Link href="/new-client-inquiry" className="text-white/50 hover:text-[#D52E28] transition-colors">Get Started</Link></li>
+              <li><Link href="/lease-inquiry" className="text-white/50 hover:text-[#D52E28] transition-colors">Lease Inquiry</Link></li>
               <li><Link href="/apartment-locating" className="text-white/50 hover:text-[#D52E28] transition-colors">Apartment Locating</Link></li>
               <li><Link href="/land-farm-ranch" className="text-white/50 hover:text-[#D52E28] transition-colors">Land, Farm & Ranch</Link></li>
+              <li><Link href="/lets-connect" className="text-white/50 hover:text-[#D52E28] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
