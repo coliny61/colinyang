@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/colin-headshot.jpg',
-        width: 800,
-        height: 600,
-        alt: 'Colin Yang - Dallas Fort Worth Real Estate Agent',
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Colin Yang - DFW Luxury Real Estate Agent',
       },
     ],
   },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Colin Yang | DFW Luxury Real Estate',
     description: 'Bilingual luxury real estate agent in Dallas-Fort Worth.',
-    images: ['/images/colin-headshot.jpg'],
+    images: ['/twitter-image'],
   },
   robots: {
     index: true,
