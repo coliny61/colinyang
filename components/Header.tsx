@@ -10,6 +10,7 @@ const navigation = [
   { name: 'Portfolio', href: '/portfolio' },
   { name: 'Services', href: '/new-client-inquiry' },
   { name: 'Land & Ranch', href: '/land-farm-ranch' },
+  { name: 'Lease Inquiry', href: '/lease-inquiry' },
 ]
 
 export default function Header() {
