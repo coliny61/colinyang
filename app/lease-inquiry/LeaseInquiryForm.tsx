@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, FormEvent } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 // ── Property Configuration ─────────────────────────────────────────
 // Add new properties here. Units will populate automatically.
@@ -76,8 +77,24 @@ function SectionDivider({ title }: { title: string }) {
 
 // ── Main Form Component ────────────────────────────────────────────
 export default function LeaseInquiryForm() {
+  const searchParams = useSearchParams()
   const [selectedProperty, setSelectedProperty] = useState('')
   const [unitInterest, setUnitInterest] = useState('')
+
+  // Pre-select property/unit from query params (e.g., from /hondo page)
+  useEffect(() => {
+    const propertyParam = searchParams.get('property')
+    const unitParam = searchParams.get('unit')
+    if (propertyParam && PROPERTIES.some(p => p.id === propertyParam)) {
+      setSelectedProperty(propertyParam)
+      if (unitParam) {
+        const property = PROPERTIES.find(p => p.id === propertyParam)
+        if (property?.units.some(u => u.id === unitParam)) {
+          setUnitInterest(unitParam)
+        }
+      }
+    }
+  }, [searchParams])
   const [applicantNames, setApplicantNames] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')

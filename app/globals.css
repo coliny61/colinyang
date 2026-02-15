@@ -500,6 +500,20 @@ label {
   animation: marquee 30s linear infinite;
 }
 
+/* Ken Burns effect for hero slideshows */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate(-2%, -1%);
+  }
+}
+
+.ken-burns-active {
+  animation: kenBurns 7s ease-out forwards;
+}
+
 /* Red glow effect */
 .glow-red {
   box-shadow: 0 0 60px rgba(213, 46, 40, 0.3);

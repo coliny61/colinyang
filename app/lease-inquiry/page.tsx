@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Metadata } from 'next'
 import QuickContact from '@/components/QuickContact'
 import LeaseInquiryForm from './LeaseInquiryForm'
@@ -30,7 +31,9 @@ export default function LeaseInquiryPage() {
           </div>
 
           {/* Form */}
-          <LeaseInquiryForm />
+          <Suspense fallback={<div className="bg-[#141414] border border-[#2a2a2a] p-8 md:p-10 text-center text-white/50">Loading form...</div>}>
+            <LeaseInquiryForm />
+          </Suspense>
 
           {/* Contact Section */}
           <div className="mt-12 text-center">
