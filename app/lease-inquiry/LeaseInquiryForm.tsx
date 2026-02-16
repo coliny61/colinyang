@@ -14,7 +14,11 @@ const PROPERTIES = [
       { id: '204', label: 'Unit 204' },
     ],
   },
-  // To add more properties, copy the block above and update id, name, units
+  {
+    id: '2315-hawthorne',
+    name: '2315 Hawthorne Avenue, Dallas, TX',
+    units: [],
+  },
 ]
 
 const LEASE_DURATIONS = [
