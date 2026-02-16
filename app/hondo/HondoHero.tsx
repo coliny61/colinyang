@@ -4,13 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const HERO_IMAGES = [
-  '/images/hondo/living-room.jpeg',
-  '/images/hondo/kitchen.jpeg',
-  '/images/hondo/primary-bedroom-1.jpeg',
-  '/images/hondo/primary-bathroom.jpeg',
-  '/images/hondo/rooftop-terrace-1.jpeg',
-]
+const HERO_IMAGES: string[] = []
 
 const CYCLE_DURATION = 6000 // 6 seconds per slide
 

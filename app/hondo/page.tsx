@@ -25,31 +25,7 @@ export const metadata: Metadata = {
   },
 }
 
-const GALLERY_IMAGES = [
-  '/images/hondo/living-room.jpeg',
-  '/images/hondo/living-dining.jpeg',
-  '/images/hondo/kitchen.jpeg',
-  '/images/hondo/kitchen-island.jpeg',
-  '/images/hondo/dining-kitchen.jpeg',
-  '/images/hondo/dining-room.jpeg',
-  '/images/hondo/primary-bedroom-1.jpeg',
-  '/images/hondo/primary-bedroom-2.jpeg',
-  '/images/hondo/primary-bathroom.jpeg',
-  '/images/hondo/bedroom-2.jpeg',
-  '/images/hondo/bedroom-3.jpeg',
-  '/images/hondo/bathroom-2.jpeg',
-  '/images/hondo/walk-in-closet-1.jpeg',
-  '/images/hondo/walk-in-closet-2.jpeg',
-  '/images/hondo/vanity-nook.jpeg',
-  '/images/hondo/sitting-area.jpeg',
-  '/images/hondo/entry-staircase.jpeg',
-  '/images/hondo/hallway.jpeg',
-  '/images/hondo/hallway-2.jpeg',
-  '/images/hondo/rooftop-terrace-1.jpeg',
-  '/images/hondo/rooftop-terrace-2.jpeg',
-  '/images/hondo/rooftop-view.jpeg',
-  '/images/hondo/garage.jpeg',
-]
+const GALLERY_IMAGES: string[] = []
 
 const FEATURES = [
   { icon: 'home', label: 'New Construction', desc: 'Brand new, never lived in' },
@@ -160,18 +136,20 @@ export default function HondoPage() {
       </section>
 
       {/* ── Photo Gallery ──────────────────────────────────────── */}
-      <section className="section section-surface">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <div className="badge mb-4">Photo Gallery</div>
-            <h2 className="text-white" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
-              Take a Look Inside
-            </h2>
-          </div>
+      {GALLERY_IMAGES.length > 0 && (
+        <section className="section section-surface">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="badge mb-4">Photo Gallery</div>
+              <h2 className="text-white" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+                Take a Look Inside
+              </h2>
+            </div>
 
-          <PropertyGallery images={GALLERY_IMAGES} address="2203 Hondo Avenue" />
-        </div>
-      </section>
+            <PropertyGallery images={GALLERY_IMAGES} address="2203 Hondo Avenue" />
+          </div>
+        </section>
+      )}
 
       {/* ── Floor Plan Overview ─────────────────────────────────── */}
       <section className="section">
@@ -224,7 +202,7 @@ export default function HondoPage() {
       {/* ── CTA Banner ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#D52E28] to-[#b82420]" />
-        <div className="absolute inset-0 bg-[url('/images/hondo/rooftop-terrace-1.jpeg')] bg-cover bg-center opacity-10" />
+        <div className="absolute inset-0 bg-[#0a0a0a] opacity-10" />
         <div className="relative max-w-3xl mx-auto px-6 py-16 text-center">
           <h2 className="text-white mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
             Interested? Apply Today.
