@@ -86,7 +86,7 @@ const jsonLd = {
   url: 'https://colinyang.com',
   telephone: '+1-469-256-1088',
   email: 'colin@brayreg.com',
-  image: 'https://colinyang.com/images/colin-headshot.jpg',
+  image: 'https://colinyang.com/opengraph-image',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Dallas',
