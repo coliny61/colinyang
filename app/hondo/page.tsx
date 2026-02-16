@@ -6,18 +6,12 @@ import QuickContact from '@/components/QuickContact'
 import HondoHero from './HondoHero'
 
 export const metadata: Metadata = {
-  title: 'For Lease: 2203 Hondo Avenue, Dallas TX | 3 Bed / 3.5 Bath Townhome',
-  description: 'Luxury new-construction townhome for lease at 2203 Hondo Avenue, Dallas TX. 3 bed, 3.5 bath, 2,440 sqft with rooftop patio, 2-car garage, and downtown skyline views. $4,200/mo — 13th month FREE on a 12-month lease.',
-  keywords: [
-    '2203 Hondo Avenue',
-    'Dallas townhome for lease',
-    'Dallas luxury rental',
-    'Oak Lawn lease',
-    '3 bedroom townhome Dallas',
-    'new construction lease Dallas',
-    'rooftop patio Dallas',
-    'Colin Yang',
-  ],
+  title: 'For Lease: 2203 Hondo Avenue, Dallas TX',
+  description: '3 Bed | 3.5 Bath | 2,440 Sqft | $4,200/mo — 13th Month FREE',
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: 'For Lease: 2203 Hondo Avenue, Dallas TX — $4,200/mo',
     description: '3 Bed | 3.5 Bath | 2,440 Sqft | Rooftop Patio | 2-Car Garage | 13th Month FREE',
@@ -28,9 +22,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'For Lease: 2203 Hondo Avenue — $4,200/mo',
     description: '3 Bed | 3.5 Bath | 2,440 Sqft | Rooftop Patio | 13th Month FREE',
-  },
-  alternates: {
-    canonical: 'https://colinyang.com/hondo',
   },
 }
 
@@ -71,34 +62,6 @@ const FEATURES = [
   { icon: 'eye', label: 'Skyline Views', desc: 'Dallas downtown views from multiple rooms' },
 ]
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Residence',
-  name: '2203 Hondo Avenue',
-  description: 'Luxury new-construction townhome for lease in Dallas, TX. 3 bedrooms, 3.5 bathrooms, 2,440 sqft with rooftop patio and 2-car garage.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '2203 Hondo Avenue',
-    addressLocality: 'Dallas',
-    addressRegion: 'TX',
-    postalCode: '75219',
-    addressCountry: 'US',
-  },
-  floorSize: {
-    '@type': 'QuantitativeValue',
-    value: 2440,
-    unitCode: 'FTK',
-  },
-  numberOfRooms: 3,
-  numberOfBathroomsTotal: 3.5,
-  amenityFeature: [
-    { '@type': 'LocationFeatureSpecification', name: 'Rooftop Patio' },
-    { '@type': 'LocationFeatureSpecification', name: '2-Car Garage' },
-    { '@type': 'LocationFeatureSpecification', name: 'New Construction' },
-    { '@type': 'LocationFeatureSpecification', name: 'Quartz Countertops' },
-  ],
-}
-
 function FeatureIcon({ type }: { type: string }) {
   const icons: Record<string, JSX.Element> = {
     home: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />,
@@ -120,10 +83,6 @@ function FeatureIcon({ type }: { type: string }) {
 export default function HondoPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <QuickContact />
 
       {/* ── Hero ────────────────────────────────────────────────── */}

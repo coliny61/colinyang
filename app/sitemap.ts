@@ -30,7 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/land-farm-ranch`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/lets-connect`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.6 },
     { url: `${baseUrl}/available`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.95 },
-    { url: `${baseUrl}/hondo`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${baseUrl}/hawthorne`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
   ]
 
