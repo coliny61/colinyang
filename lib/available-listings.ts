@@ -60,7 +60,8 @@ export const availableListings: AvailableListing[] = [
     sqft: 2500,
     garage: '2-Car',
     headline: 'Luxury Townhome in Oak Lawn',
-    thumbnail: '/images/hawthorne/exterior.jpeg', // TODO: Colin to provide photos
+    promo: '2 Weeks FREE — Sign by March 1',
+    thumbnail: '/images/hawthorne/exterior.jpeg',
     ctaLabel: 'Apply Now',
     ctaLink: '/lease-inquiry?property=2315-hawthorne',
   },

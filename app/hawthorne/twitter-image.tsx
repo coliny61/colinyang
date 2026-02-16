@@ -103,6 +103,19 @@ export default async function Image() {
           <span style={{ color: '#D52E28', fontWeight: 700 }}>$4,750/mo</span>
         </div>
 
+        {/* Promo */}
+        <div
+          style={{
+            fontSize: 18,
+            color: '#D52E28',
+            fontWeight: 600,
+            letterSpacing: '2px',
+            marginTop: '8px',
+          }}
+        >
+          2 Weeks FREE — Sign by March 1
+        </div>
+
         {/* Bottom info */}
         <div
           style={{

@@ -7,7 +7,7 @@ import HawthorneHero from './HawthorneHero'
 
 export const metadata: Metadata = {
   title: 'For Lease: 2315 Hawthorne Avenue, Dallas TX | 3 Bed / 3.5 Bath Townhome',
-  description: 'Luxury townhome for lease at 2315 Hawthorne Avenue, Dallas TX 75219. 3 bed, 3.5 bath, 2,500 sqft with 2-car garage. $4,750/mo.',
+  description: 'Luxury townhome for lease at 2315 Hawthorne Avenue, Dallas TX 75219. 3 bed, 3.5 bath, 2,500 sqft with 2-car garage. $4,750/mo — 2 weeks FREE if lease signed by March 1.',
   keywords: [
     '2315 Hawthorne Avenue',
     'Dallas townhome for lease',
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'For Lease: 2315 Hawthorne Avenue, Dallas TX — $4,750/mo',
-    description: '3 Bed | 3.5 Bath | 2,500 Sqft | 2-Car Garage',
+    description: '3 Bed | 3.5 Bath | 2,500 Sqft | 2-Car Garage | 2 Weeks FREE',
     url: 'https://colinyang.com/hawthorne',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'For Lease: 2315 Hawthorne Avenue — $4,750/mo',
-    description: '3 Bed | 3.5 Bath | 2,500 Sqft | 2-Car Garage',
+    description: '3 Bed | 3.5 Bath | 2,500 Sqft | 2-Car Garage | 2 Weeks FREE',
   },
   alternates: {
     canonical: 'https://colinyang.com/hawthorne',
@@ -148,6 +148,15 @@ export default function HawthornePage() {
               <div className="text-2xl font-bold text-[#D52E28]">$4,750<span className="text-sm font-normal text-white/50">/mo</span></div>
             </div>
           </div>
+
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <span className="badge">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clipRule="evenodd" />
+              </svg>
+              2 Weeks FREE — Sign by March 1
+            </span>
+          </div>
         </div>
       </section>
 
@@ -204,7 +213,7 @@ export default function HawthornePage() {
             Interested? Apply Today.
           </h2>
           <p className="text-white/80 mb-2 text-lg">
-            $4,750/month &mdash; 3 Bed / 3.5 Bath / 2,500 Sqft
+            $4,750/month &mdash; 2 Weeks FREE if lease signed by March 1.
           </p>
           <p className="text-white/60 mb-8">
             2315 Hawthorne Avenue, Dallas TX 75219. Reach out or submit a pre-qualification.
