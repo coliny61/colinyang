@@ -4,10 +4,12 @@ interface ListingSpecsBarProps {
   sqft: string
   garage: string
   price: string
+  priceLabel?: string
+  priceSuffix?: string
   badges?: string[]
 }
 
-export default function ListingSpecsBar({ beds, baths, sqft, garage, price, badges }: ListingSpecsBarProps) {
+export default function ListingSpecsBar({ beds, baths, sqft, garage, price, priceLabel = 'Rent', priceSuffix = '/mo', badges }: ListingSpecsBarProps) {
   return (
     <section className="bg-[#141414] border-y border-[#2a2a2a]">
       <div className="max-w-5xl mx-auto px-6 py-8">
@@ -29,8 +31,8 @@ export default function ListingSpecsBar({ beds, baths, sqft, garage, price, badg
             <div className="text-2xl font-semibold text-white">{garage}</div>
           </div>
           <div className="col-span-2 md:col-span-1">
-            <div className="text-xs text-white/40 uppercase tracking-widest mb-1">Rent</div>
-            <div className="text-2xl font-bold text-[#D52E28]">{price}<span className="text-sm font-normal text-white/50">/mo</span></div>
+            <div className="text-xs text-white/40 uppercase tracking-widest mb-1">{priceLabel}</div>
+            <div className="text-2xl font-bold text-[#D52E28]">{price}{priceSuffix && <span className="text-sm font-normal text-white/50">{priceSuffix}</span>}</div>
           </div>
         </div>
 

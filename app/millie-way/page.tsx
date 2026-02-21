@@ -117,6 +117,8 @@ export default function MillieWayPage() {
         sqft="2,619"
         garage="2-Car"
         price="Coming Soon"
+        priceLabel="Price"
+        priceSuffix=""
         badges={['Corner Lot', 'Craig Ranch Community']}
       />
 
