@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/lets-connect`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.6 },
     { url: `${baseUrl}/available`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.95 },
     { url: `${baseUrl}/hawthorne`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
+    { url: `${baseUrl}/millie-way`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
   ]
 
   const propertyPages = properties.map((slug) => ({

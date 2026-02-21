@@ -239,7 +239,7 @@ export default function LeaseInquiryForm() {
           </select>
         </div>
 
-        {property && (
+        {property && property.units.length > 0 && (
           <div>
             <label className="block text-sm font-medium text-white mb-3">
               Which unit are you interested in? <span className="text-[#D52E28]">*</span>

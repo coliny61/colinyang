@@ -65,6 +65,26 @@ export const availableListings: AvailableListing[] = [
     ctaLabel: 'Apply Now',
     ctaLink: '/lease-inquiry?property=2315-hawthorne',
   },
+  {
+    slug: 'millie-way',
+    propertyId: '6401-millie-way',
+    address: '6401 Millie Way',
+    city: 'McKinney',
+    state: 'TX',
+    zip: '75070',
+    neighborhood: 'Craig Ranch',
+    type: 'sale',
+    status: 'FOR SALE',
+    price: 'Coming Soon',
+    beds: 3,
+    baths: 3.5,
+    sqft: 2619,
+    garage: '2-Car',
+    headline: 'Single Family Home in Craig Ranch',
+    thumbnail: '/images/millie-way/exterior.jpeg',
+    ctaLabel: 'Inquire Now',
+    ctaLink: '/new-client-inquiry',
+  },
 ]
 
 export function getAvailableListing(slug: string): AvailableListing | undefined {
