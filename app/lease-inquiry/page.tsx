@@ -1,19 +1,19 @@
 import { Suspense } from 'react'
 import { Metadata } from 'next'
-import QuickContact from '@/components/QuickContact'
 import LeaseInquiryForm from './LeaseInquiryForm'
 
 export const metadata: Metadata = {
   title: 'Lease Inquiry | Colin Yang - DFW Real Estate',
   description: 'Submit a residential lease pre-qualification inquiry for properties in Dallas-Fort Worth. Colin Yang provides expert leasing services through Bray Real Estate Group.',
   keywords: 'lease inquiry Dallas, residential lease DFW, rental application, apartment lease, Colin Yang leasing, Bray Real Estate',
+  alternates: {
+    canonical: 'https://colinyang.com/lease-inquiry',
+  },
 }
 
 export default function LeaseInquiryPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <QuickContact />
-
       <div className="section">
         <div className="container mx-auto max-w-2xl">
           {/* Header */}

@@ -1,55 +1,26 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import QuickContact from '@/components/QuickContact'
+import { testimonials } from '@/lib/testimonials'
+import CTABanner from '@/components/CTABanner'
+import { AGENT_TEL } from '@/lib/agent'
 
 export const metadata: Metadata = {
   title: 'Client Reviews | Colin Yang - DFW Luxury Real Estate',
   description: 'Read what clients say about working with Colin Yang. 5-star rated real estate agent in Dallas-Fort Worth specializing in luxury homes, investments, and relocations.',
   keywords: 'Colin Yang reviews, DFW realtor reviews, Dallas real estate agent reviews, 5 star realtor Dallas',
+  alternates: {
+    canonical: 'https://colinyang.com/reviews',
+  },
 }
 
-const reviews = [
-  {
-    quote: "Colin is a lifesaver! With football season fast approaching and my stress levels through the roof, Colin swooped in and found me the perfect home in under 2 days. He understood exactly what I needed without me having to overthink it. The entire process was smooth, fast, and painless. If you need someone who gets it done — Colin's your guy.",
-    author: 'Colby W.',
-    role: 'Professional Athlete',
-    date: '2024',
-    platform: 'Google',
-    rating: 5,
-  },
-  {
-    quote: "Colin went above and beyond as my realtor. He quickly found me the ideal home and made the entire process seamless. His knowledge of the market and attention to detail were incredible. Highly recommend Colin for anyone looking for a dedicated and knowledgeable real estate professional!",
-    author: 'Jalen R.',
-    role: 'First-Time Buyer',
-    date: '2024',
-    platform: 'Google',
-    rating: 5,
-  },
-  {
-    quote: "We had a crazy short two week window to find a home, and he made it feel like a walk in the park. Colin was incredibly responsive, always available to answer questions, and made every showing count. We ended up with a home we absolutely love. Incredible service from start to finish.",
-    author: 'Tannaz Z.',
-    role: 'Relocating Family',
-    date: '2024',
-    platform: 'Google',
-    rating: 5,
-  },
-  {
-    quote: "Working with Colin has been an exceptional real estate experience. His knowledge of the DFW market exceeded all expectations. He provided data-driven insights that helped us make smart investment decisions. Professional, responsive, and genuinely cares about his clients.",
-    author: 'Ryann H.',
-    role: 'Investor',
-    date: '2024',
-    platform: 'Google',
-    rating: 5,
-  },
-  {
-    quote: "Colin made our relocation from out of state completely stress-free. He took the time to understand our needs, showed us properties that were perfectly aligned with what we wanted, and negotiated a great deal. His bilingual service was a huge plus for our family.",
-    author: 'David L.',
-    role: 'Out-of-State Relocation',
-    date: '2024',
-    platform: 'Zillow',
-    rating: 5,
-  },
-]
+const reviews = testimonials.map(t => ({
+  quote: t.longQuote || t.quote,
+  author: t.author,
+  role: t.role,
+  date: t.date || '2024',
+  platform: t.platform || 'Google',
+  rating: t.rating || 5,
+}))
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -94,7 +65,6 @@ function StarRow({ count = 5 }: { count?: number }) {
 export default function ReviewsPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <QuickContact />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -168,23 +138,17 @@ export default function ReviewsPage() {
       </section>
 
       {/* CTA */}
-      <section className="section relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#D52E28] to-[#b82420]"></div>
-        <div className="relative container mx-auto text-center">
-          <h2 className="text-white mb-6">Ready to Be Our Next Success Story?</h2>
-          <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-            Join the growing list of satisfied clients. Let Colin help you achieve your real estate goals.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/new-client-inquiry" className="btn-white">
-              Get Started
-            </Link>
-            <a href="tel:4692561088" className="btn-white">
-              (469) 256-1088
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTABanner
+        heading="Ready to Be Our Next Success Story?"
+        subtext="Join the growing list of satisfied clients. Let Colin help you achieve your real estate goals."
+      >
+        <Link href="/new-client-inquiry" className="btn-white">
+          Get Started
+        </Link>
+        <a href={AGENT_TEL} className="btn-white">
+          (469) 256-1088
+        </a>
+      </CTABanner>
     </div>
   )
 }

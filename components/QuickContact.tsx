@@ -1,10 +1,12 @@
 'use client'
 
+import { AGENT_TEL, AGENT_SMS } from '@/lib/agent'
+
 export default function QuickContact() {
   return (
     <div className="quick-contact">
       <a
-        href="tel:4692561088"
+        href={AGENT_TEL}
         className="quick-contact-btn phone"
         aria-label="Call Colin"
         title="Call Now"
@@ -14,7 +16,7 @@ export default function QuickContact() {
         </svg>
       </a>
       <a
-        href="sms:4692561088"
+        href={AGENT_SMS}
         className="quick-contact-btn text"
         aria-label="Text Colin"
         title="Send Text"

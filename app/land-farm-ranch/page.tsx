@@ -1,19 +1,19 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import QuickContact from '@/components/QuickContact'
 import LandRanchForm from './LandRanchForm'
 
 export const metadata: Metadata = {
   title: 'Land, Farm & Ranch | Colin Yang - DFW Luxury Real Estate',
   description: 'Looking for land, farm, or ranch property in Texas? Colin Yang offers expertise and off-market listings through his Texas Tech network.',
   keywords: 'Texas land for sale, ranch property Texas, farm land DFW, West Texas ranch, Colin Yang land broker',
+  alternates: {
+    canonical: 'https://colinyang.com/land-farm-ranch',
+  },
 }
 
 export default function LandFarmRanchPage() {
   return (
     <div className="bg-[#0a0a0a]">
-      <QuickContact />
-
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center justify-center">
         <Image

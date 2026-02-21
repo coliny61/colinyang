@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { AGENT, AGENT_TEL, AGENT_MAILTO } from '@/lib/agent'
 
 export default function Footer() {
   return (
@@ -12,8 +13,8 @@ export default function Footer() {
             <div className="flex items-center gap-4 mb-6">
               <div className="relative w-14 h-14 rounded-full overflow-hidden border border-[#2a2a2a]">
                 <Image
-                  src="/images/colin-headshot.jpg"
-                  alt="Colin Yang"
+                  src={AGENT.headshot}
+                  alt={AGENT.name}
                   fill
                   className="object-cover object-top"
                 />
@@ -30,8 +31,8 @@ export default function Footer() {
             {/* Bray Real Estate Group */}
             <div className="border-t border-[#2a2a2a] pt-6">
               <p className="text-xs text-white/30 uppercase tracking-wider mb-2">Brokered by</p>
-              <p className="text-white font-semibold">Bray Real Estate Group</p>
-              <p className="text-white/40 text-sm">3130 Harvard Ave, Ste. B, Dallas, TX 75205</p>
+              <p className="text-white font-semibold">{AGENT.brokerage}</p>
+              <p className="text-white/40 text-sm">{AGENT.brokerageAddress}</p>
             </div>
           </div>
 
@@ -58,19 +59,19 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-sm">Contact</h4>
             <ul className="space-y-4">
               <li>
-                <a href="tel:4692561088" className="text-white/50 hover:text-[#D52E28] transition-colors flex items-center gap-3">
+                <a href={AGENT_TEL} className="text-white/50 hover:text-[#D52E28] transition-colors flex items-center gap-3">
                   <svg className="w-4 h-4 text-[#D52E28]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  (469) 256-1088
+                  {AGENT.phoneFormatted}
                 </a>
               </li>
               <li>
-                <a href="mailto:colin@brayreg.com" className="text-white/50 hover:text-[#D52E28] transition-colors flex items-center gap-3">
+                <a href={AGENT_MAILTO} className="text-white/50 hover:text-[#D52E28] transition-colors flex items-center gap-3">
                   <svg className="w-4 h-4 text-[#D52E28]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  colin@brayreg.com
+                  {AGENT.email}
                 </a>
               </li>
               <li>
@@ -120,8 +121,8 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             {/* License Info */}
             <div className="text-sm text-white/40">
-              <p>Colin Yang | Texas Real Estate License #815417</p>
-              <p>Bray Real Estate Group | Dallas, Texas</p>
+              <p>{AGENT.name} | Texas Real Estate License {AGENT.license}</p>
+              <p>{AGENT.brokerage} | Dallas, Texas</p>
             </div>
 
             {/* TREC Links - Required */}

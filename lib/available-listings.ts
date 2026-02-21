@@ -39,7 +39,7 @@ export const availableListings: AvailableListing[] = [
     garage: '2-Car',
     headline: 'Luxury New-Construction Townhome',
     promo: '13th Month FREE on 12-Month Lease',
-    thumbnail: '/images/hondo/living-room.jpeg',
+    thumbnail: '',
     units: ['Unit 203', 'Unit 204'],
     ctaLabel: 'Apply Now',
     ctaLink: '/lease-inquiry?property=2203-hondo',

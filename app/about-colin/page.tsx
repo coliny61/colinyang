@@ -1,12 +1,17 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import QuickContact from '@/components/QuickContact'
+import { testimonials as allTestimonials } from '@/lib/testimonials'
+import CTABanner from '@/components/CTABanner'
+import { AGENT_TEL } from '@/lib/agent'
 
 export const metadata: Metadata = {
   title: 'About Colin Yang',
   description: 'Learn about Colin Yang - Frisco native, Texas Tech football alumni, bilingual real estate expert serving the Dallas-Fort Worth metroplex. Licensed REALTOR® with Bray Real Estate Group.',
   keywords: 'Colin Yang realtor, bilingual real estate agent Texas, Dallas realtor',
+  alternates: {
+    canonical: 'https://colinyang.com/about-colin',
+  },
 }
 
 const highlights = [
@@ -16,34 +21,12 @@ const highlights = [
   { label: 'License', value: '#815417' },
 ]
 
-const testimonials = [
-  {
-    quote: "Colin is a lifesaver! With football season fast approaching and my stress levels through the roof, Colin swooped in and found me the perfect home in under 2 days.",
-    author: "Colby W.",
-    role: "Professional Athlete",
-  },
-  {
-    quote: "Colin went above and beyond as my realtor. He quickly found me the ideal home and made the entire process seamless.",
-    author: "Jalen R.",
-    role: "First-Time Buyer",
-  },
-  {
-    quote: "I was in a frantic rush... Colin stepped in and found me a fantastic home in less than 48 hours.",
-    author: "Chris B.",
-    role: "Corporate Relocator",
-  },
-  {
-    quote: "We had a crazy short two week window to find a home, and he made it feel like a walk in the park.",
-    author: "Tannaz Z.",
-    role: "Relocating Family",
-  },
-]
+// About page shows 4 testimonials: Colby, Jalen, Chris, Tannaz
+const testimonials = [allTestimonials[0], allTestimonials[1], allTestimonials[2], allTestimonials[3]]
 
 export default function AboutColinPage() {
   return (
     <div>
-      <QuickContact />
-
       {/* Hero Section */}
       <section className="section">
         <div className="container mx-auto">
@@ -171,26 +154,18 @@ export default function AboutColinPage() {
       </section>
 
       {/* CTA */}
-      <section className="section relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#D52E28] to-[#b82420]"></div>
-        <div className="absolute inset-0 bg-[url('/images/hero.jpeg')] bg-cover bg-center opacity-10"></div>
-
-        <div className="relative container mx-auto text-center">
-          <h2 className="text-white mb-6">Let&apos;s Work Together</h2>
-          <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-            Ready to buy, sell, or invest? I&apos;m here to guide you every step of the way.
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/new-client-inquiry" className="btn-white">
-              Start Your Journey
-            </Link>
-            <a href="tel:4692561088" className="btn-white">
-              (469) 256-1088
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTABanner
+        heading="Let's Work Together"
+        subtext="Ready to buy, sell, or invest? I'm here to guide you every step of the way."
+        backgroundImage="/images/hero.jpeg"
+      >
+        <Link href="/new-client-inquiry" className="btn-white">
+          Start Your Journey
+        </Link>
+        <a href={AGENT_TEL} className="btn-white">
+          (469) 256-1088
+        </a>
+      </CTABanner>
     </div>
   )
 }

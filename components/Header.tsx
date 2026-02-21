@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { AGENT, AGENT_TEL } from '@/lib/agent'
 
 const navigation = [
   { name: 'About', href: '/about-colin' },
@@ -26,8 +27,8 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-4">
             <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#2a2a2a]">
               <Image
-                src="/images/colin-headshot.jpg"
-                alt="Colin Yang"
+                src={AGENT.headshot}
+                alt={AGENT.name}
                 fill
                 className="object-cover object-top"
               />
@@ -57,8 +58,8 @@ export default function Header() {
           <div className="hidden lg:flex lg:items-center lg:gap-6">
             <div className="text-right mr-4">
               <div className="text-xs text-white/40 uppercase tracking-wider">Call Now</div>
-              <a href="tel:4692561088" className="text-white font-medium hover:text-[#D52E28] transition-colors">
-                (469) 256-1088
+              <a href={AGENT_TEL} className="text-white font-medium hover:text-[#D52E28] transition-colors">
+                {AGENT.phoneFormatted}
               </a>
             </div>
             <Link href="/new-client-inquiry" className="btn-primary !py-3 !px-6 !text-xs">
@@ -113,13 +114,13 @@ export default function Header() {
               ))}
               <hr className="border-[#2a2a2a] my-4" />
               <a
-                href="tel:4692561088"
+                href={AGENT_TEL}
                 className="flex items-center gap-3 text-sm font-medium py-4 px-4 text-white/70"
               >
                 <svg className="w-5 h-5 text-[#D52E28]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                (469) 256-1088
+                {AGENT.phoneFormatted}
               </a>
               <Link
                 href="/new-client-inquiry"

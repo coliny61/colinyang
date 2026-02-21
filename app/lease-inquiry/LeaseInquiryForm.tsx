@@ -2,6 +2,7 @@
 
 import { useState, useEffect, FormEvent } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { FORMSPREE_ENDPOINT, formatPhone } from '@/lib/form-utils'
 
 // ── Property Configuration ─────────────────────────────────────────
 // Add new properties here. Units will populate automatically.
@@ -55,14 +56,6 @@ const INCOME_RANGES = [
   '$10,000+/mo',
   'Prefer not to say',
 ]
-
-// ── Phone formatter ────────────────────────────────────────────────
-function formatPhone(value: string): string {
-  const digits = value.replace(/\D/g, '').slice(0, 10)
-  if (digits.length <= 3) return digits
-  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
-  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
-}
 
 // ── Section Divider ────────────────────────────────────────────────
 function SectionDivider({ title }: { title: string }) {
@@ -171,7 +164,7 @@ export default function LeaseInquiryForm() {
     }
 
     try {
-      const res = await fetch('https://formspree.io/f/xqebdqqw', {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(formData),

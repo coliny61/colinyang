@@ -453,53 +453,6 @@ label {
   color: #fff;
 }
 
-/* Bilingual text */
-.chinese-text {
-  font-family: 'Noto Sans SC', sans-serif;
-}
-
-/* Floating elements */
-.float-element {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-/* Gradient border */
-.gradient-border {
-  position: relative;
-}
-
-.gradient-border::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-}
-
-/* Video background overlay */
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.75);
-}
-
-/* Marquee animation */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee {
-  animation: marquee 30s linear infinite;
-}
-
 /* Ken Burns effect for hero slideshows */
 @keyframes kenBurns {
   0% {

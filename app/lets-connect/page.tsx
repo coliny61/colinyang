@@ -1,18 +1,18 @@
 import { Metadata } from 'next'
-import QuickContact from '@/components/QuickContact'
 import ConnectForm from './ConnectForm'
 
 export const metadata: Metadata = {
   title: "Let's Connect | Colin Yang - DFW Real Estate",
   description: 'Get in touch with Colin Yang for real estate services in Dallas-Fort Worth. Buying, selling, leasing, or investing — reach out today.',
   keywords: 'contact Colin Yang, DFW realtor contact, Dallas real estate agent, schedule consultation',
+  alternates: {
+    canonical: 'https://colinyang.com/lets-connect',
+  },
 }
 
 export default function LetsConnectPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <QuickContact />
-
       <div className="section">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">

@@ -1,18 +1,18 @@
 import { Metadata } from 'next'
-import QuickContact from '@/components/QuickContact'
 import ApartmentForm from './ApartmentForm'
 
 export const metadata: Metadata = {
   title: 'Apartment Locating | Colin Yang - DFW Real Estate',
   description: 'Free apartment locating services in Dallas-Fort Worth. Find apartments, houses, townhomes, and condos for lease.',
   keywords: 'apartment locating Dallas, DFW apartments for rent, Dallas lease, Frisco apartments, McKinney rentals',
+  alternates: {
+    canonical: 'https://colinyang.com/apartment-locating',
+  },
 }
 
 export default function ApartmentLocatingPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <QuickContact />
-
       <div className="section">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12">

@@ -1,19 +1,19 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import QuickContact from '@/components/QuickContact'
 import MarketDashboard from './MarketDashboard'
 
 export const metadata: Metadata = {
   title: 'DFW Market Stats | Colin Yang - Real Estate Market Data',
   description: 'Stay informed with the latest Dallas-Fort Worth real estate market statistics. Median prices, days on market, and city-by-city comparisons updated monthly.',
   keywords: 'DFW real estate market stats, Dallas home prices, Fort Worth market data, Texas real estate trends, Colin Yang market analysis',
+  alternates: {
+    canonical: 'https://colinyang.com/market-stats',
+  },
 }
 
 export default function MarketStatsPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <QuickContact />
-
       {/* Header */}
       <section className="section pb-0">
         <div className="container mx-auto text-center">

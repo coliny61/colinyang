@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import QuickContact from '@/components/QuickContact'
+import { AGENT } from '@/lib/agent'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://colinyang.com'),
@@ -81,11 +83,11 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
-  name: 'Colin Yang',
+  name: AGENT.name,
   description: 'Bilingual luxury real estate agent serving Dallas-Fort Worth',
   url: 'https://colinyang.com',
-  telephone: '+1-469-256-1088',
-  email: 'colin@brayreg.com',
+  telephone: `+1-${AGENT.phone.slice(0, 3)}-${AGENT.phone.slice(3, 6)}-${AGENT.phone.slice(6)}`,
+  email: AGENT.email,
   image: 'https://colinyang.com/opengraph-image',
   address: {
     '@type': 'PostalAddress',
@@ -105,7 +107,7 @@ const jsonLd = {
   knowsLanguage: ['English', 'Chinese'],
   worksFor: {
     '@type': 'RealEstateAgent',
-    name: 'Bray Real Estate Group',
+    name: AGENT.brokerage,
     address: {
       '@type': 'PostalAddress',
       streetAddress: '3130 Harvard Ave, Ste. B',
@@ -145,6 +147,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <QuickContact />
       </body>
     </html>
   )

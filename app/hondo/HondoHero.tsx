@@ -12,6 +12,7 @@ export default function HondoHero() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
+    if (HERO_IMAGES.length <= 1) return
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length)
     }, CYCLE_DURATION)
@@ -21,7 +22,7 @@ export default function HondoHero() {
   return (
     <section className="relative h-[85vh] min-h-[600px] max-h-[900px] overflow-hidden -mt-20">
       {/* Background Images with Ken Burns */}
-      {HERO_IMAGES.map((src, index) => (
+      {HERO_IMAGES.length > 0 && HERO_IMAGES.map((src, index) => (
         <div
           key={src}
           className="absolute inset-0 transition-opacity duration-1500"
@@ -86,20 +87,22 @@ export default function HondoHero() {
       </div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-        {HERO_IMAGES.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-1 rounded-full transition-all duration-500 ${
-              index === currentIndex
-                ? 'w-8 bg-[#D52E28]'
-                : 'w-4 bg-white/30 hover:bg-white/50'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+      {HERO_IMAGES.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          {HERO_IMAGES.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                index === currentIndex
+                  ? 'w-8 bg-[#D52E28]'
+                  : 'w-4 bg-white/30 hover:bg-white/50'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }

@@ -1,18 +1,18 @@
 import { Metadata } from 'next'
-import QuickContact from '@/components/QuickContact'
 import ClientInquiryForm from './ClientInquiryForm'
 
 export const metadata: Metadata = {
   title: 'New Client Inquiry | Colin Yang - DFW Luxury Real Estate',
   description: 'Start your real estate journey with Colin Yang. Whether buying, selling, or leasing in Dallas-Fort Worth, fill out our inquiry form to get started.',
   keywords: 'Colin Yang contact, DFW real estate inquiry, Dallas home buying, bilingual realtor Dallas',
+  alternates: {
+    canonical: 'https://colinyang.com/new-client-inquiry',
+  },
 }
 
 export default function NewClientInquiryPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <QuickContact />
-
       <div className="section">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12">

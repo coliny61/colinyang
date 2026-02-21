@@ -1,12 +1,16 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import QuickContact from '@/components/QuickContact'
+import CTABanner from '@/components/CTABanner'
+import { AGENT_TEL } from '@/lib/agent'
 
 export const metadata: Metadata = {
   title: 'Portfolio | Colin Yang - DFW Luxury Real Estate',
   description: 'View Colin Yang\'s real estate portfolio - luxury properties sold and listed across Dallas-Fort Worth. Browse homes in Dallas, Frisco, McKinney, and surrounding areas.',
   keywords: 'Colin Yang portfolio, DFW homes sold, Dallas real estate listings, luxury homes Dallas, McKinney homes, Frisco real estate',
+  alternates: {
+    canonical: 'https://colinyang.com/portfolio',
+  },
 }
 
 const properties = [
@@ -26,8 +30,6 @@ const properties = [
 export default function PortfolioPage() {
   return (
     <div>
-      <QuickContact />
-
       {/* Hero Header */}
       <section className="section">
         <div className="container mx-auto">
@@ -88,25 +90,18 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA */}
-      <section className="section relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#D52E28] to-[#b82420]"></div>
-        <div className="absolute inset-0 bg-[url('/images/hero.jpeg')] bg-cover bg-center opacity-10"></div>
-
-        <div className="relative container mx-auto text-center">
-          <h2 className="text-white mb-6">Ready to Add Your Home to This List?</h2>
-          <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-            Whether buying or selling, I&apos;m here to help you every step of the way.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/new-client-inquiry" className="btn-white">
-              Get Started
-            </Link>
-            <a href="tel:4692561088" className="btn-white">
-              (469) 256-1088
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTABanner
+        heading="Ready to Add Your Home to This List?"
+        subtext="Whether buying or selling, I'm here to help you every step of the way."
+        backgroundImage="/images/hero.jpeg"
+      >
+        <Link href="/new-client-inquiry" className="btn-white">
+          Get Started
+        </Link>
+        <a href={AGENT_TEL} className="btn-white">
+          (469) 256-1088
+        </a>
+      </CTABanner>
     </div>
   )
 }

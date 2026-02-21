@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import QuickContact from '@/components/QuickContact'
+import { testimonials as allTestimonials } from '@/lib/testimonials'
+import CTABanner from '@/components/CTABanner'
+import { AGENT_TEL, AGENT_MAILTO } from '@/lib/agent'
 
 export const metadata: Metadata = {
   title: 'Colin Yang | Dallas-Fort Worth Luxury Real Estate Agent',
@@ -58,28 +60,8 @@ const services = [
   },
 ]
 
-const testimonials = [
-  {
-    quote: "Colin is a lifesaver! With football season fast approaching and my stress levels through the roof, Colin swooped in and found me the perfect home in under 2 days.",
-    author: "Colby W.",
-    role: "Professional Athlete",
-  },
-  {
-    quote: "Colin went above and beyond as my realtor. He quickly found me the ideal home and made the entire process seamless. Highly recommend!",
-    author: "Jalen R.",
-    role: "First-Time Buyer",
-  },
-  {
-    quote: "We had a crazy short two week window to find a home, and he made it feel like a walk in the park. Incredible service.",
-    author: "Tannaz Z.",
-    role: "Relocating Family",
-  },
-  {
-    quote: "Working with Colin has been an exceptional real estate experience. His knowledge of the DFW market exceeded all expectations.",
-    author: "Ryann H.",
-    role: "Investor",
-  },
-]
+// Homepage shows 4 testimonials: Colby, Jalen, Tannaz, Ryann
+const testimonials = [allTestimonials[0], allTestimonials[1], allTestimonials[3], allTestimonials[4]]
 
 const stats = [
   { number: '$50M+', label: 'Volume Closed' },
@@ -91,8 +73,6 @@ const stats = [
 export default function Home() {
   return (
     <div>
-      <QuickContact />
-
       {/* Hero Section - Luxury */}
       <section className="relative min-h-screen flex items-center">
         <Image
@@ -381,32 +361,24 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#D52E28] to-[#b82420]"></div>
-        <div className="absolute inset-0 bg-[url('/images/hero.jpeg')] bg-cover bg-center opacity-10"></div>
-
-        <div className="relative container mx-auto text-center">
-          <h2 className="text-white mb-6">Ready to Find Your Dream Home?</h2>
-          <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-            Let&apos;s discuss your real estate goals. Schedule a complimentary consultation today.
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a href="tel:4692561088" className="btn-white">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              (469) 256-1088
-            </a>
-            <a href="mailto:colin@brayreg.com" className="btn-white">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Email Colin
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTABanner
+        heading="Ready to Find Your Dream Home?"
+        subtext="Let's discuss your real estate goals. Schedule a complimentary consultation today."
+        backgroundImage="/images/hero.jpeg"
+      >
+        <a href={AGENT_TEL} className="btn-white">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          (469) 256-1088
+        </a>
+        <a href={AGENT_MAILTO} className="btn-white">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Email Colin
+        </a>
+      </CTABanner>
     </div>
   )
 }

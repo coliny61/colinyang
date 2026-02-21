@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import QuickContact from '@/components/QuickContact'
 import ValuationForm from './ValuationForm'
 
 export const metadata: Metadata = {
@@ -10,6 +9,9 @@ export const metadata: Metadata = {
   keywords: 'home valuation Dallas, what is my home worth, CMA Dallas Fort Worth, free home value estimate, Colin Yang home value',
   other: {
     'og:type': 'website',
+  },
+  alternates: {
+    canonical: 'https://colinyang.com/home-valuation',
   },
 }
 
@@ -45,7 +47,6 @@ const stats = [
 export default function HomeValuationPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <QuickContact />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
