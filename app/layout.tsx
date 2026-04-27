@@ -118,7 +118,7 @@ const jsonLd = {
   knowsLanguage: ['English', 'Chinese'],
   priceRange: '$$$',
   sameAs: [
-    'https://share.google/6aumSobwd3JlTIAXM',
+    AGENT.googleProfile,
     'https://www.google.com/search?kgmid=/g/11yc11v7s7',
     `https://www.instagram.com/${AGENT.instagram}`,
     `https://www.linkedin.com/in/${AGENT.linkedin}`,

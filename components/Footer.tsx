@@ -103,7 +103,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://share.google/6aumSobwd3JlTIAXM"
+                  href={AGENT.googleProfile}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/50 hover:text-[#D52E28] transition-colors flex items-center gap-3"

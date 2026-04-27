@@ -6,6 +6,11 @@ export interface Testimonial {
   date?: string
   platform?: string
   rating?: number
+  /**
+   * Direct link to the review on its source platform (Google, Zillow, etc.).
+   * If empty, the review card falls back to AGENT.googleProfile.
+   */
+  sourceUrl?: string
 }
 
 export const testimonials: Testimonial[] = [

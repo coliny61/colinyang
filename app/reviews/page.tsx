@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { testimonials } from '@/lib/testimonials'
 import CTABanner from '@/components/CTABanner'
-import { AGENT_TEL } from '@/lib/agent'
+import { AGENT, AGENT_TEL, GOOGLE_REVIEW_URL } from '@/lib/agent'
 
 export const metadata: Metadata = {
   title: 'Client Reviews | Colin Yang - DFW Luxury Real Estate',
@@ -20,6 +20,7 @@ const reviews = testimonials.map(t => ({
   date: t.date || '2024',
   platform: t.platform || 'Google',
   rating: t.rating || 5,
+  sourceUrl: t.sourceUrl,
 }))
 
 const jsonLd = {
@@ -76,14 +77,22 @@ export default function ReviewsPage() {
           <div className="badge mx-auto mb-6">Testimonials</div>
           <h1 className="text-white mb-6">What Clients Say</h1>
 
-          {/* Aggregate Rating */}
-          <div className="flex items-center justify-center gap-4 mb-4">
+          {/* Aggregate Rating — links to Google profile */}
+          <a
+            href={AGENT.googleProfile}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`See all reviews for ${AGENT.name} on Google`}
+            className="inline-flex items-center justify-center gap-4 mb-4 group"
+          >
             <span className="text-5xl font-bold text-white">5.0</span>
-            <div>
+            <div className="text-left">
               <StarRow />
-              <p className="text-white/50 text-sm mt-1">Based on {reviews.length} reviews</p>
+              <p className="text-white/50 text-sm mt-1 group-hover:text-[#D52E28] transition-colors">
+                Based on {reviews.length} Google reviews →
+              </p>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
@@ -91,36 +100,51 @@ export default function ReviewsPage() {
       <section className="section section-surface">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
-            {reviews.map((review, index) => (
-              <div key={index} className="bg-[#141414] border border-[#2a2a2a] p-8 flex flex-col">
-                <StarRow count={review.rating} />
-                <blockquote className="text-white/80 leading-relaxed mt-4 mb-6 flex-1">
-                  &ldquo;{review.quote}&rdquo;
-                </blockquote>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-[#D52E28] flex items-center justify-center text-white font-bold text-lg">
-                      {review.author.charAt(0)}
+            {reviews.map((review, index) => {
+              const reviewUrl = review.sourceUrl || AGENT.googleProfile
+              return (
+                <a
+                  key={index}
+                  href={reviewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Read ${review.author}'s review on ${review.platform}`}
+                  className="group bg-[#141414] border border-[#2a2a2a] hover:border-[#D52E28]/40 transition-colors p-8 flex flex-col"
+                >
+                  <StarRow count={review.rating} />
+                  <blockquote className="text-white/80 leading-relaxed mt-4 mb-6 flex-1">
+                    &ldquo;{review.quote}&rdquo;
+                  </blockquote>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-[#D52E28] flex items-center justify-center text-white font-bold text-lg">
+                        {review.author.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-white">{review.author}</div>
+                        <div className="text-sm text-white/40">{review.role}</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-semibold text-white">{review.author}</div>
-                      <div className="text-sm text-white/40">{review.role}</div>
+                    <div className="text-right">
+                      <span className="text-xs text-white/40 border border-white/10 px-2 py-1 group-hover:text-[#D52E28] group-hover:border-[#D52E28]/30 transition-colors inline-flex items-center gap-1">
+                        {review.platform}
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </span>
+                      <div className="text-xs text-white/20 mt-1">{review.date}</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-xs text-white/30 border border-white/10 px-2 py-1">{review.platform}</span>
-                    <div className="text-xs text-white/20 mt-1">{review.date}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+                </a>
+              )
+            })}
           </div>
 
           {/* Google CTA */}
           <div className="mt-12 text-center">
-            <p className="text-white/50 mb-4">Want to leave a review?</p>
+            <p className="text-white/50 mb-4">Worked with Colin? Leave a review.</p>
             <a
-              href="https://g.page/r/review"
+              href={GOOGLE_REVIEW_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary inline-flex items-center gap-2"
