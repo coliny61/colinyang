@@ -17,14 +17,16 @@ export const properties: Property[] = [
   { slug: '4928-lexington', address: '4928 Lexington Ct.', city: 'Dallas', state: 'Texas', status: 'Leased at $3,600', imageCount: 12, imageExt: 'jpeg' },
   { slug: '715-declaration', address: '715 Declaration Dr.', city: 'Princeton', state: 'Texas', imageCount: 10, imageExt: 'jpeg' },
   { slug: '4556-cypress-thorn', address: '4556 Cypress Thorn Dr.', city: 'Arlington', state: 'Texas', imageCount: 7, imageExt: 'jpeg' },
-  { slug: '2611-hondo-ave', address: '2611 Hondo Ave.', city: 'Dallas', state: 'Texas', imageCount: 0, imageExt: '' },
+  { slug: '2611-hondo-ave', address: '2611 Hondo Ave.', city: 'Dallas', state: 'Texas', imageCount: 3, imageExt: 'jpg' },
   { slug: '404-warwick-boulevard', address: '404 Warwick Blvd.', city: 'The Colony', state: 'Texas', imageCount: 0, imageExt: '' },
-  { slug: '8100-rincon-street', address: '8100 Rincon St.', city: 'Frisco', state: 'Texas', imageCount: 0, imageExt: '' },
-  { slug: '2209-tralee-circle', address: '2209 Tralee Circle', city: 'McKinney', state: 'Texas', imageCount: 0, imageExt: '' },
-  { slug: '5734-oram-street', address: '5734 Oram St.', city: 'Dallas', state: 'Texas', imageCount: 0, imageExt: '' },
-  { slug: '7304-collin-mckinney-parkway', address: '7304 Collin McKinney Pkwy.', city: 'McKinney', state: 'Texas', imageCount: 0, imageExt: '' },
+  { slug: '8100-rincon-street', address: '8100 Rincon St.', city: 'Frisco', state: 'Texas', imageCount: 1, imageExt: 'jpg' },
+  { slug: '2209-tralee-circle', address: '2209 Tralee Circle', city: 'McKinney', state: 'Texas', imageCount: 1, imageExt: 'jpg' },
+  { slug: '5734-oram-street', address: '5734 Oram St.', city: 'Dallas', state: 'Texas', imageCount: 1, imageExt: 'jpg' },
+  { slug: '7304-collin-mckinney-parkway', address: '7304 Collin McKinney Pkwy.', city: 'McKinney', state: 'Texas', imageCount: 3, imageExt: 'jpg' },
   { slug: '4700-sagan', address: '4700 Sagan Dr.', city: 'McKinney', state: 'Texas', imageCount: 30, imageExt: 'jpeg' },
   { slug: '508-saddle-pass', address: '508 Saddle Pass', city: 'McKinney', state: 'Texas', imageCount: 12, imageExt: 'jpg' },
+  { slug: '2510-thornton-rd', address: '2510 Thornton Rd.', city: 'Austin', state: 'Texas', imageCount: 1, imageExt: 'jpg' },
+  { slug: '9219-windy-crest-dr', address: '9219 Windy Crest Dr.', city: 'Dallas', state: 'Texas', imageCount: 1, imageExt: 'jpg' },
 ]
 
 export function getProperty(slug: string): Property | undefined {

@@ -70,9 +70,50 @@ const stats = [
   { number: '5★', label: 'Client Rating' },
 ]
 
+const faqs = [
+  {
+    q: 'What areas of Dallas-Fort Worth do you serve?',
+    a: 'I work across the DFW metroplex, with deep experience in Dallas, Fort Worth, Frisco, Plano, McKinney, Allen, Highland Park, University Park, Preston Hollow, The Colony, Southlake, Westlake, Prosper, and Celina. I also represent clients on land, farm, and ranch transactions across Texas — including Austin and the Hill Country when the right opportunity calls for it.',
+  },
+  {
+    q: 'Do you speak Chinese or Mandarin?',
+    a: 'Yes — I am fully bilingual in English and Mandarin (中文). I regularly represent international buyers, Chinese-speaking families relocating to DFW, and investors from Asia who want a trusted local partner who can communicate clearly in both languages and navigate cultural nuances.',
+  },
+  {
+    q: 'Do you work with first-time home buyers as well as luxury clients?',
+    a: 'Absolutely. Whether you are buying your first home, your forever home, or your tenth investment property, I tailor the experience to where you are. Every client gets the same clear communication, honest pricing analysis, and white-glove service throughout the transaction.',
+  },
+  {
+    q: 'What does it cost to work with you?',
+    a: 'Compensation varies by transaction and is disclosed upfront — for buyers we sign a representation agreement before any showings, and for sellers commission is agreed before listing. There are never any surprises. Reach out for a no-pressure consultation and I will walk you through exactly what to expect.',
+  },
+  {
+    q: 'How do you price a home for sale?',
+    a: 'I bring a data-driven approach: comparable sales, current active competition, days-on-market trends, neighborhood-level demand, and seasonal factors. With a Master’s in Data Science and local market intuition, you get a price that maximizes value while staying competitive — backed by numbers, not guesswork.',
+  },
+  {
+    q: 'How quickly can you respond and schedule a showing?',
+    a: 'My average response time is under 48 hours, and showings can typically be scheduled within the same week. Call or text (469) 256-1088 for the fastest reply, or send an inquiry through the site.',
+  },
+]
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}
+
 export default function Home() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero Section - Luxury */}
       <section className="relative min-h-screen flex items-center">
         <Image
@@ -237,6 +278,43 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container mx-auto">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="badge mx-auto mb-6">Frequently Asked</div>
+              <h2 className="mb-4">Questions Clients Ask</h2>
+              <p className="text-white/60">Quick answers about working with me. Have a question that&apos;s not here? <Link href="/lets-connect" className="text-[#D52E28] hover:underline">Just reach out.</Link></p>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((item) => (
+                <details
+                  key={item.q}
+                  className="group bg-[#141414] border border-[#2a2a2a] open:border-[#D52E28]/40 transition-colors"
+                >
+                  <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+                    <h3 className="text-white text-lg font-medium">{item.q}</h3>
+                    <svg
+                      className="w-5 h-5 text-[#D52E28] flex-shrink-0 transition-transform group-open:rotate-45"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                  </summary>
+                  <div className="px-6 pb-6 -mt-2">
+                    <p className="text-white/70 leading-relaxed">{item.a}</p>
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
         </div>

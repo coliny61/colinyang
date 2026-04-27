@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '7304-collin-mckinney-parkway',
     '4700-sagan',
     '508-saddle-pass',
+    '2510-thornton-rd',
+    '9219-windy-crest-dr',
   ]
 
   const staticPages = [
@@ -32,6 +34,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/available`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.95 },
     { url: `${baseUrl}/hawthorne`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${baseUrl}/millie-way`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
+    { url: `${baseUrl}/guides`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guides/dfw-buyer-guide`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guides/dfw-seller-checklist`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guides/relocating-to-dfw`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
   ]
 
   const propertyPages = properties.map((slug) => ({

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import PropertyGallery from '@/components/PropertyGallery'
 import AgentCard from '@/components/AgentCard'
 import { properties, getProperty, getAdjacentProperties, getPropertyImages } from '@/lib/properties'
+import { AGENT } from '@/lib/agent'
 
 export async function generateStaticParams() {
   return properties.map((property) => ({
@@ -16,10 +17,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const property = getProperty(slug)
   if (!property) return { title: 'Property Not Found' }
 
+  const statusLine = property.status ? `${property.status} by Colin Yang.` : `Represented by Colin Yang.`
+  const specs = [
+    property.beds && `${property.beds} bed`,
+    property.baths && `${property.baths} bath`,
+    property.sqft && `${property.sqft.toLocaleString()} sqft`,
+  ].filter(Boolean).join(', ')
+  const specsPhrase = specs ? ` ${specs}.` : ''
+
   return {
     title: `${property.address} | Colin Yang - DFW Luxury Real Estate`,
-    description: `View photos of ${property.address} in ${property.city}, ${property.state}. Listed by Colin Yang, DFW Luxury Real Estate Expert.`,
-    keywords: `${property.address}, ${property.city} homes, Dallas real estate, Colin Yang`,
+    description: `${property.address}, ${property.city}, ${property.state}. ${statusLine}${specsPhrase} View photos and listing details.`,
+    keywords: `${property.address}, ${property.city} homes, ${property.city} real estate, Dallas real estate agent, Colin Yang realtor`,
     alternates: {
       canonical: `https://colinyang.com/portfolio/${slug}`,
     },
@@ -37,8 +46,60 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
   const images = getPropertyImages(property)
   const { prev, next } = getAdjacentProperties(slug)
 
+  const propertyUrl = `https://colinyang.com/portfolio/${slug}`
+  const absoluteImages = images.map((src) => `https://colinyang.com${src}`)
+
+  const listingJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateListing',
+    name: property.address,
+    url: propertyUrl,
+    image: absoluteImages.length > 0 ? absoluteImages : undefined,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: property.address,
+      addressLocality: property.city,
+      addressRegion: 'TX',
+      addressCountry: 'US',
+    },
+    ...(property.beds || property.baths || property.sqft
+      ? {
+          numberOfRooms: property.beds,
+          numberOfBathroomsTotal: property.baths,
+          floorSize: property.sqft
+            ? { '@type': 'QuantitativeValue', value: property.sqft, unitCode: 'FTK' }
+            : undefined,
+        }
+      : {}),
+    broker: {
+      '@type': 'RealEstateAgent',
+      name: AGENT.name,
+      url: 'https://colinyang.com',
+      telephone: `+1-${AGENT.phone.slice(0, 3)}-${AGENT.phone.slice(3, 6)}-${AGENT.phone.slice(6)}`,
+      worksFor: { '@type': 'Organization', name: AGENT.brokerage },
+    },
+  }
+
+  const breadcrumbsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://colinyang.com' },
+      { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://colinyang.com/portfolio' },
+      { '@type': 'ListItem', position: 3, name: property.address, item: propertyUrl },
+    ],
+  }
+
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+      />
       <div className="max-w-5xl mx-auto px-6 py-12">
         {/* Back to Portfolio */}
         <Link

@@ -95,16 +95,34 @@ const jsonLd = {
     addressRegion: 'TX',
     addressCountry: 'US',
   },
-  areaServed: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: 32.7767,
-      longitude: -96.7970,
+  areaServed: [
+    {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: 32.7767,
+        longitude: -96.7970,
+      },
+      geoRadius: '80000',
     },
-    geoRadius: '50000',
-  },
+    ...[
+      'Dallas', 'Fort Worth', 'Frisco', 'Plano', 'McKinney', 'Allen',
+      'Highland Park', 'University Park', 'Preston Hollow', 'The Colony',
+      'Southlake', 'Westlake', 'Prosper', 'Celina', 'Arlington', 'Irving',
+    ].map((name) => ({
+      '@type': 'City',
+      name,
+      containedInPlace: { '@type': 'AdministrativeArea', name: 'Texas' },
+    })),
+  ],
   knowsLanguage: ['English', 'Chinese'],
+  priceRange: '$$$',
+  sameAs: [
+    'https://share.google/6aumSobwd3JlTIAXM',
+    'https://www.google.com/search?kgmid=/g/11yc11v7s7',
+    `https://www.instagram.com/${AGENT.instagram}`,
+    `https://www.linkedin.com/in/${AGENT.linkedin}`,
+  ],
   worksFor: {
     '@type': 'RealEstateAgent',
     name: AGENT.brokerage,

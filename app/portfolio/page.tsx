@@ -17,14 +17,16 @@ const properties = [
   { slug: '4928-lexington', address: '4928 Lexington Court', city: 'Dallas', status: 'LEASED', hasImages: true, thumbnail: '/images/portfolio/4928-lexington/photo-1.jpeg' },
   { slug: '715-declaration', address: '715 Declaration Drive', city: 'Princeton', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/715-declaration/photo-1.jpeg' },
   { slug: '4556-cypress-thorn', address: '4556 Cypress Thorn Drive', city: 'Arlington', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/4556-cypress-thorn/photo-1.jpeg' },
-  { slug: '2611-hondo-ave', address: '2611 Hondo Avenue', city: 'Dallas', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '2611-hondo-ave', address: '2611 Hondo Avenue', city: 'Dallas', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/2611-hondo-ave/photo-1.jpg' },
   { slug: '404-warwick-boulevard', address: '404 Warwick Boulevard', city: 'The Colony', status: 'SOLD', hasImages: false, thumbnail: null },
-  { slug: '8100-rincon-street', address: '8100 Rincon Street', city: 'Frisco', status: 'SOLD', hasImages: false, thumbnail: null },
-  { slug: '2209-tralee-circle', address: '2209 Tralee Circle', city: 'McKinney', status: 'SOLD', hasImages: false, thumbnail: null },
-  { slug: '5734-oram-street', address: '5734 Oram Street', city: 'Dallas', status: 'SOLD', hasImages: false, thumbnail: null },
-  { slug: '7304-collin-mckinney-parkway', address: '7304 Collin McKinney Parkway', city: 'McKinney', status: 'SOLD', hasImages: false, thumbnail: null },
+  { slug: '8100-rincon-street', address: '8100 Rincon Street', city: 'Frisco', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/8100-rincon-street/photo-1.jpg' },
+  { slug: '2209-tralee-circle', address: '2209 Tralee Circle', city: 'McKinney', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/2209-tralee-circle/photo-1.jpg' },
+  { slug: '5734-oram-street', address: '5734 Oram Street', city: 'Dallas', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/5734-oram-street/photo-1.jpg' },
+  { slug: '7304-collin-mckinney-parkway', address: '7304 Collin McKinney Parkway', city: 'McKinney', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/7304-collin-mckinney-parkway/photo-1.jpg' },
   { slug: '4700-sagan', address: '4700 Sagan Drive', city: 'McKinney', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/4700-sagan/photo-1.jpeg' },
   { slug: '508-saddle-pass', address: '508 Saddle Pass', city: 'McKinney', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/508-saddle-pass/photo-1.jpg' },
+  { slug: '2510-thornton-rd', address: '2510 Thornton Road', city: 'Austin', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/2510-thornton-rd/photo-1.jpg' },
+  { slug: '9219-windy-crest-dr', address: '9219 Windy Crest Drive', city: 'Dallas', status: 'SOLD', hasImages: true, thumbnail: '/images/portfolio/9219-windy-crest-dr/photo-1.jpg' },
 ]
 
 export default function PortfolioPage() {
