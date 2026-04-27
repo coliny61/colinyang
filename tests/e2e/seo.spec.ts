@@ -42,7 +42,7 @@ test.describe('SEO', () => {
     }))
     const agent = parsed.find((p) => p['@type'] === 'RealEstateAgent')
     expect(agent).toBeDefined()
-    expect(agent.sameAs).toContain('https://share.google/6aumSobwd3JlTIAXM')
+    expect(agent.sameAs).toContain('https://www.google.com/maps?cid=11621998611320775991')
     expect(agent.sameAs.some((u: string) => u.includes('instagram'))).toBe(true)
     expect(agent.sameAs.some((u: string) => u.includes('linkedin'))).toBe(true)
     // areaServed should be array including specific cities
@@ -84,7 +84,7 @@ test.describe('SEO', () => {
     await page.goto('/')
     const footer = page.locator('footer')
     await expect(footer.getByRole('link', { name: 'Free Guides' })).toHaveAttribute('href', '/guides')
-    await expect(footer.getByRole('link', { name: /Google Reviews/i })).toHaveAttribute('href', /share\.google/)
+    await expect(footer.getByRole('link', { name: /Google Reviews/i })).toHaveAttribute('href', /maps\?cid=11621998611320775991/)
   })
 
   test('home-valuation cross-links to seller checklist', async ({ page }) => {

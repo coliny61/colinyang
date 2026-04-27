@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 
-const GOOGLE_PROFILE = 'https://share.google/6aumSobwd3JlTIAXM'
+const GOOGLE_PROFILE = 'https://www.google.com/maps?cid=11621998611320775991'
+const GOOGLE_WRITE_REVIEW = 'https://search.google.com/local/writereview?placeid=ChIJ22OnH3g9TIY3pds3KaJJoQ'
 
 test.describe('Reviews page Google integration', () => {
   test('"Review on Google" button has a real href (not placeholder)', async ({ page }) => {
@@ -8,11 +9,7 @@ test.describe('Reviews page Google integration', () => {
     // Exact match — review cards also contain "review on Google" in aria-labels
     const button = page.getByRole('link', { name: 'Review on Google', exact: true })
     const href = await button.getAttribute('href')
-    expect(href).toBeTruthy()
-    // Must NOT be the previous placeholder
-    expect(href).not.toBe('https://g.page/r/review')
-    // Must point to Colin's actual Google presence
-    expect(href).toMatch(/share\.google|g\.page\/r\/.+\/review|search\.google\.com\/local\/writereview/)
+    expect(href).toBe(GOOGLE_WRITE_REVIEW)
     expect(await button.getAttribute('target')).toBe('_blank')
     expect(await button.getAttribute('rel')).toContain('noopener')
   })

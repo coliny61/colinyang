@@ -10,13 +10,15 @@ export const AGENT = {
   linkedin: 'colinyang61',
   brokerage: 'Bray Real Estate Group',
   brokerageAddress: '3130 Harvard Ave, Ste. B, Dallas, TX 75205',
-  // Google Business Profile (KGMID /g/11yc11v7s7).
-  // googleProfile: opens the public profile where reviews are visible.
-  // googleWriteReview: 1-click write-review link. Empty string until Colin
-  // pastes his GBP "share review form" URL (g.page/r/<handle>/review) —
-  // until then we fall back to googleProfile (2-click).
-  googleProfile: 'https://share.google/6aumSobwd3JlTIAXM',
-  googleWriteReview: '',
+  // Google Business Profile.
+  //   KGMID:      /g/11yc11v7s7
+  //   Feature ID: 0x864c3d781fa763db:0xa149a22937dba537
+  //   CID:        11621998611320775991
+  //   Place ID:   ChIJ22OnH3g9TIY3pds3KaJJoQ
+  // googleProfile opens the Maps profile (cleanest canonical URL).
+  // googleWriteReview is the 1-click "Write a review" form.
+  googleProfile: 'https://www.google.com/maps?cid=11621998611320775991',
+  googleWriteReview: 'https://search.google.com/local/writereview?placeid=ChIJ22OnH3g9TIY3pds3KaJJoQ',
 } as const
 
 export const AGENT_TEL = `tel:${AGENT.phone}`
