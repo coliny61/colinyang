@@ -48,4 +48,22 @@ test.describe('Reviews page Google integration', () => {
     const link = page.locator('footer').getByRole('link', { name: /Google Reviews/i })
     expect(await link.getAttribute('href')).toBe(GOOGLE_PROFILE)
   })
+
+  test('homepage solicits past clients to leave a Google review', async ({ page }) => {
+    await page.goto('/')
+    const cta = page.locator('main').getByRole('link', { name: /Leave a Google Review/i })
+    await expect(cta).toBeVisible()
+    expect(await cta.getAttribute('href')).toBe(GOOGLE_WRITE_REVIEW)
+    expect(await cta.getAttribute('target')).toBe('_blank')
+  })
+
+  test('/about-colin solicits past clients to leave a Google review', async ({ page }) => {
+    await page.goto('/about-colin')
+    const cta = page.locator('main').getByRole('link', { name: /Leave a Google Review/i })
+    await expect(cta).toBeVisible()
+    expect(await cta.getAttribute('href')).toBe(GOOGLE_WRITE_REVIEW)
+    expect(await cta.getAttribute('target')).toBe('_blank')
+    // Section heading should signal "past clients" framing, not "find a realtor"
+    await expect(page.getByRole('heading', { name: /Worked With Me Before/i })).toBeVisible()
+  })
 })
