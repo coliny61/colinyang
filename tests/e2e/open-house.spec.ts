@@ -114,4 +114,27 @@ test.describe('Open House Sign-In', () => {
     await expect(honeypot).toBeHidden()
     expect(await honeypot.getAttribute('tabindex')).toBe('-1')
   })
+
+  test('print page renders QR canvas + URL fallback + branding', async ({ page }) => {
+    await page.goto('/open-house/print')
+    await expect(page.locator('h1')).toContainText(/Scan to Sign In/i)
+    await expect(page.getByText('colinyang.com/open-house')).toBeVisible()
+    await expect(page.locator('canvas')).toBeVisible()
+    await expect(page.locator('main').getByText('Colin Yang')).toBeVisible()
+    await expect(page.locator('main').getByText(/\(469\) 256-1088/)).toBeVisible()
+  })
+
+  test('print page is noindex', async ({ page }) => {
+    await page.goto('/open-house/print')
+    const robots = await page.locator('meta[name="robots"]').first().getAttribute('content')
+    expect(robots).toMatch(/noindex/i)
+  })
+
+  test('Holland Ct CTAs link to /open-house', async ({ page }) => {
+    await page.goto('/holland-ct')
+    const links = page.getByRole('link', { name: /Open House Sign-In/i })
+    expect(await links.count()).toBeGreaterThanOrEqual(1)
+    const href = await links.first().getAttribute('href')
+    expect(href).toContain('/open-house')
+  })
 })
