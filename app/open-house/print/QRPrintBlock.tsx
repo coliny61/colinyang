@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
 import Image from 'next/image'
+import { AGENT } from '@/lib/agent'
 
 const SIGN_IN_URL = 'https://colinyang.com/open-house'
 
@@ -40,16 +41,16 @@ export default function QRPrintBlock() {
         <div className="border-t border-[#2a2a2a] pt-6 print:border-gray-300">
           <div className="flex items-center justify-center gap-4">
             <Image
-              src="/images/colin-headshot.jpg"
-              alt="Colin Yang"
+              src={AGENT.headshot}
+              alt={AGENT.name}
               width={48}
               height={48}
               className="rounded-full object-cover"
             />
             <div className="text-left">
-              <div className="text-white font-semibold print:text-black">Colin Yang</div>
+              <div className="text-white font-semibold print:text-black">{AGENT.name}</div>
               <div className="text-white/60 text-sm print:text-gray-700">
-                Bray Real Estate Group · (469) 256-1088
+                {AGENT.brokerage} · {AGENT.phoneFormatted}
               </div>
             </div>
           </div>
