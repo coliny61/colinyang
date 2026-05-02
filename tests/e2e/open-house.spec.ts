@@ -106,4 +106,12 @@ test.describe('Open House Sign-In', () => {
     expect(payload.agent).toBe('Yes — John Doe (Keller Williams)')
     expect(typeof payload.submitted_at).toBe('string')
   })
+
+  test('honeypot field is present and hidden', async ({ page }) => {
+    await page.goto('/open-house')
+    const honeypot = page.locator('input[name="_gotcha"]')
+    await expect(honeypot).toHaveCount(1)
+    await expect(honeypot).toBeHidden()
+    expect(await honeypot.getAttribute('tabindex')).toBe('-1')
+  })
 })

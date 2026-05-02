@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { FORMSPREE_ENDPOINT, formatPhone } from '@/lib/form-utils'
+import { formatPhone, submitToFormspree } from '@/lib/form-utils'
 import { OPEN_HOUSE_PROPERTIES, DEFAULT_PROPERTY_SLUG } from '@/lib/open-house-properties'
 
 const TIMELINE_OPTIONS = [
@@ -63,22 +63,13 @@ export default function OpenHouseForm() {
       submitted_at: new Date().toISOString(),
     }
 
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(formData),
-      })
-      if (res.ok) {
-        setSubmitted(true)
-      } else {
-        setError('Something went wrong. Please try again.')
-      }
-    } catch {
-      setError('Network error. Please check your connection and try again.')
-    } finally {
-      setSubmitting(false)
+    const result = await submitToFormspree(formData)
+    if (result.ok) {
+      setSubmitted(true)
+    } else {
+      setError(result.error || 'Something went wrong. Please try again.')
     }
+    setSubmitting(false)
   }
 
   if (submitted) {
