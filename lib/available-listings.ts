@@ -85,6 +85,27 @@ export const availableListings: AvailableListing[] = [
     ctaLabel: 'Inquire Now',
     ctaLink: '/new-client-inquiry',
   },
+  {
+    slug: 'holland-ct',
+    propertyId: '2609-holland-ct',
+    address: '2609 Holland Court',
+    city: 'Celina',
+    state: 'TX',
+    zip: '75009',
+    neighborhood: 'Cambridge Crossing',
+    type: 'sale',
+    status: 'FOR SALE',
+    price: '$529,900',
+    beds: 4,
+    baths: 3,
+    sqft: 2297,
+    garage: '2-Car',
+    headline: 'Highland Homes Lynnwood in Cambridge Crossing',
+    promo: 'Open House: Sat May 2 · 1–4 PM | Sun May 3 · 12–4 PM',
+    thumbnail: '/images/holland-ct/exterior.jpg',
+    ctaLabel: 'Inquire Now',
+    ctaLink: '/new-client-inquiry',
+  },
 ]
 
 export function getAvailableListing(slug: string): AvailableListing | undefined {
